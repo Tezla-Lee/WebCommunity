@@ -15,17 +15,24 @@ public class UserService {
     @Autowired
     UserRepository userRepo;
 
-    public void insertUser(User user) {
+    public int insertUser(User user) {
         if(userRepo.findById(user.getId()).isPresent()){
             System.out.println("중복 id");
+            return -1;
         } else {
             userRepo.save(user);
+            return 1;
         }
     }
 
-    public void updateUser(User user) {
-        userRepo.findById(user.getId());
-        userRepo.save(user);
+    public int updateUser(User user) {
+        if(userRepo.findById(user.getId()).isPresent()){
+            System.out.println("수정할 id가 없다");
+            return -1;
+        } else {
+            userRepo.save(user);
+            return 1;
+        }
     }
 
     public void deleteUser(User user) {
