@@ -1,5 +1,6 @@
 package com.leenayoung.service;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -8,24 +9,24 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class BoardServiceImplTest {
 
-    @org.junit.Test
+    @Test
     public void insertBoard() {
 
     }
 
-    @org.junit.Test
+    @Test
     public void deleteBoard() {
     }
 
-    @org.junit.Test
+    @Test
     public void updateBoard() {
     }
 
-    @org.junit.Test
+    @Test
     public void getBoard() {
     }
 
-    @org.junit.Test
+    @Test
     public void getBoardList() {
     }
 }
