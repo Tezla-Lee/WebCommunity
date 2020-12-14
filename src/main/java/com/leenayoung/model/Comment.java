@@ -1,6 +1,7 @@
 package com.leenayoung.model;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,16 +14,18 @@ public class Comment {
     @GeneratedValue
     private long number;
 
-//    @JoinColumn(name = "USER_ID", nullable = false)
+    @JoinColumn(name = "USER_ID", nullable = false)
     private String writer;
 
     private String content;
 
-//    @JoinColumn(name = "BOARD_SEQ", nullable = false)
+//    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "BOARD_SEQ", nullable = false)
     private long seq;
 
-//    @Column(insertable = false, updatable = false, columnDefinition = "date default sysdate")
+//    @Column(insertable = false)
     @Temporal(value = TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date regDate;
 
 }

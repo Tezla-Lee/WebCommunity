@@ -1,7 +1,9 @@
 package com.leenayoung.service;
 
+import com.leenayoung.model.Board;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -9,9 +11,20 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class BoardServiceImplTest {
 
-    @Test
-    public void insertBoard() {
+    @Autowired
+    BoardService boardService;
 
+    @Test
+    public void testInsertBoard() {
+        for (int i = 0; i < 10; i++) {
+            Board board = new Board();
+            board.setTitle("insertBoard Test : " + i);
+            board.setWriter("Tester : " + i);
+            board.setContent("test content : " + i);
+            board.setCategory("카테고리");
+
+            boardService.insertBoard(board);
+        }
     }
 
     @Test
