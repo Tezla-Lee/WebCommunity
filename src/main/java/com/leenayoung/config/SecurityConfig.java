@@ -21,6 +21,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         security.exceptionHandling().accessDeniedPage("/accessDenied");
 
-
     }
 }
