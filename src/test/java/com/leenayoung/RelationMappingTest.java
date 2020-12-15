@@ -27,15 +27,17 @@ public class RelationMappingTest {
 
     @Test
     public void oneToManyInsertTest() {
-        Board board = new Board();
-        board.setTitle("매핑 테스트 1");
-        board.setWriter("나영원");
-
         User user = new User();
         user.setId("테스트 id");
         user.setPassword("테스트 pw");
         user.setName("유저 이름");
+        user.setRole("ADMIN");
         userRepository.save(user);
+
+        Board board = new Board();
+        board.setTitle("매핑 테스트 1");
+        board.setUser(user);
+
 
         Comment comment = new Comment();
         comment.setBoard(board);

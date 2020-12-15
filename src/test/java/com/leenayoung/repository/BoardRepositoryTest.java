@@ -32,11 +32,11 @@ public class BoardRepositoryTest {
         }
     }
 
-    @Test
-    public void findBoardByWriterContains() {
-        List<Board> boardList = boardRepository.findBoardByWriterContaining("Tester");
-        for (Board board : boardList) {
-            System.out.println(board.toString());
-        }
-    }
+//    @Test
+//    public void findBoardByWriterContains() {
+//        List<Board> boardList = boardRepository.findBoardByWriterContaining("Tester");
+//        for (Board board : boardList) {
+//            System.out.println(board.toString());
+//        }
+//    }
 }
