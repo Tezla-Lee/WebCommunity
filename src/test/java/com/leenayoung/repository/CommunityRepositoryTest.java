@@ -32,4 +32,11 @@ public class CommunityRepositoryTest {
         Community result = communityRepo.findByName("Community1");
         assertEquals("Community1", result.getName() );
     }
+
+    @Test
+    public void findBySeq() {
+        Community findCommunity = communityRepo.findBySeq(1L);
+        assertEquals("Community1", findCommunity.getName());
+    }
+
 }

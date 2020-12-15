@@ -5,6 +5,8 @@ import com.leenayoung.repository.CommunityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommunityServiceImpl {
 
@@ -22,15 +24,31 @@ public class CommunityServiceImpl {
         }
     }
 
-//    public int updateCommunity(Community community) {
-//
-//        if(communityRepo.findById(community.getNumber())!= null) {
-//
-//        }
-//
-//        Community findCommunity = communityRepo.findById(community.getNumber());
-//
-//        findCommunity.setName(co);
-//
-//    }
+    public int updateCommunity(Community community) {
+
+        if(communityRepo.findBySeq(community.getSeq())!= null) {
+            Community findCommunity = communityRepo.findBySeq(community.getSeq());
+            findCommunity.setName(community.getName());
+            communityRepo.save(findCommunity);
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+    public int deleteCommunity(Community community) {
+
+        if (communityRepo.findBySeq(community.getSeq()) != null) {
+
+            communityRepo.delete(community);
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+    public List<Community> getCommunityList() {
+
+        return  (List<Community>) communityRepo.findAll();
+    }
 }
