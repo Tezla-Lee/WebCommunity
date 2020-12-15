@@ -33,4 +33,9 @@ public class CategoryServiceImplTest {
 
         assertEquals( -1 , result);
     }
+
+    @Test
+    public void updateCategory() {
+
+    }
 }
