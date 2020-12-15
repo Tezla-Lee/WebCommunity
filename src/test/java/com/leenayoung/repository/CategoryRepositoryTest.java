@@ -1,6 +1,6 @@
 package com.leenayoung.repository;
 
-import com.leenayoung.model.Community;
+import com.leenayoung.model.Category;
 import org.junit.Before;
 
 import org.junit.Test;
@@ -13,23 +13,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CommunityRepositoryTest {
+public class CategoryRepositoryTest {
 
     @Autowired
-    CommunityRepository categoryRepo;
+    CategoryRepository categoryRepo;
 
     @Before
     public void prepareTest() {
-        Community community1 = new Community();
-        community1.setName("Category1");
-        categoryRepo.save(community1);
+        Category category1 = new Category();
+        category1.setName("Category1");
+        categoryRepo.save(category1);
     }
 
 
 
     @Test
     public void findByName() {
-        Community result = categoryRepo.findByName("Category1");
+        Category result = categoryRepo.findByName("Category1");
         assertEquals("Category1", result.getName() );
     }
 }

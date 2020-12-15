@@ -14,12 +14,12 @@ import javax.persistence.Id;
 @Setter
 @ToString
 @Entity
-public class Community {
+public class Category {
 
     @Id
     @GeneratedValue
     private Long number;
 
-    @Column(name="COMMUNITY_NAME", nullable = false)
+    @Column(name="CATEGORY_NAME", nullable = false)
     private String name;
 }
