@@ -29,7 +29,7 @@ public class BoardServiceImpl implements BoardService {
         newBoard.setTitle(board.getTitle());
         newBoard.setContent(board.getContent());
         newBoard.setCnt(board.getCnt());
-        newBoard.setCategory(board.getCategory());
+        newBoard.setCommunity(board.getCommunity());
         boardRepository.save(newBoard);
     }
 
