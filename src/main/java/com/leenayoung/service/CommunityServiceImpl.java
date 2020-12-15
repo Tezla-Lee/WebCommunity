@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CommunityServiceImpl {
+public class CommunityServiceImpl implements CommunityService {
 
     @Autowired
     private CommunityRepository communityRepo;
 
+    @Override
     public int insertCommunity(Community community) {
 
         if(communityRepo.findByName(community.getName())==null){
@@ -24,6 +25,7 @@ public class CommunityServiceImpl {
         }
     }
 
+    @Override
     public int updateCommunity(Community community) {
 
         if(communityRepo.findBySeq(community.getSeq())!= null) {
@@ -36,6 +38,7 @@ public class CommunityServiceImpl {
         }
     }
 
+    @Override
     public int deleteCommunity(Community community) {
 
         if (communityRepo.findBySeq(community.getSeq()) != null) {
@@ -47,6 +50,7 @@ public class CommunityServiceImpl {
         }
     }
 
+    @Override
     public List<Community> getCommunityList() {
 
         return  (List<Community>) communityRepo.findAll();
