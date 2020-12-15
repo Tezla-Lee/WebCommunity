@@ -12,30 +12,27 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserController {
 
-    @Autowired
-    UserServiceImpl userService;
-
-
-    @GetMapping("login")
-    public String loginView() {
-        System.out.println("로그인페이지로 이동");
-        return "login";
-    }
-    @PostMapping("login")
-    public String login(User user, HttpSession session) {
-        int result = userService.login(user, session);
-
-        if(result ==1 ) {
-            System.out.println("겟보드리스트로가세요");
-            return "getBoardList";
-        } else {
-            System.out.println("아이디비번이 틀렸스빈다");
-            return "login";
-        }
-
-
-
-
-    }
+//    @Autowired
+//    UserServiceImpl userService;
+//
+//
+//    @GetMapping("login")
+//    public String loginView() {
+//        System.out.println("로그인페이지로 이동");
+//        return "login";
+//    }
+//    @PostMapping("login")
+//    public String login(User user, HttpSession session) {
+//        int result = userService.login(user, session);
+//
+//        if(result ==1 ) {
+//            System.out.println("겟보드리스트로가세요");
+//            return "getBoardList";
+//        } else {
+//            System.out.println("아이디비번이 틀렸스빈다");
+//            return "login";
+//        }
+//
+//    }
 
 }
