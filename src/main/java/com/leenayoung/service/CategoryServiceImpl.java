@@ -9,7 +9,6 @@ public class CategoryServiceImpl {
 
     public void insertCategory(Category category) {
 
-
         categoryRepo.save(category);
     }
 }
