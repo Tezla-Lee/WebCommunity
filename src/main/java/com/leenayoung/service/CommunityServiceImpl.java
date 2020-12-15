@@ -20,6 +20,17 @@ public class CommunityServiceImpl {
             System.out.println("이미 존재하는 이름입니다.");
             return -1;
         }
-
     }
+
+//    public int updateCommunity(Community community) {
+//
+//        if(communityRepo.findById(community.getNumber())!= null) {
+//
+//        }
+//
+//        Community findCommunity = communityRepo.findById(community.getNumber());
+//
+//        findCommunity.setName(co);
+//
+//    }
 }

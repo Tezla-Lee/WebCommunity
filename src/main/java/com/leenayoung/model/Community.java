@@ -19,7 +19,7 @@ public class Community {
     @Id
     @GeneratedValue
     @Column(name="COMMUNITY_NUMBER")
-    private Long number;
+    private Long seq;
 
     @Column(nullable = false)
     private String name;
