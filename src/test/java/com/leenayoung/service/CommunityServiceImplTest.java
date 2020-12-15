@@ -1,10 +1,12 @@
 package com.leenayoung.service;
 
+import com.leenayoung.model.Community;
 import com.leenayoung.repository.CommunityRepository;
 import org.junit.Before;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -14,23 +16,25 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class CommunityServiceImplTest {
 
-    CommunityServiceImpl categoryService;
-    CommunityRepository categoryRepo;
+    @Autowired
+    CommunityServiceImpl communityService;
+
+    @Autowired
+    CommunityRepository communityRepository;
 
     @Before
     public void prepTest(){
         Community community = new Community();
         community.setName("ani");
-        categoryRepo.save(community);
+        communityRepository.save(community);
     }
 
     @Test
-    public void insertCategory() {
+    public void insertCommunity() {
         Community community = new Community();
         community.setName("ani");
-        int result = categoryService.insertCategory(community);
+        int result = communityService.insertCommunity(community);
         assertEquals( -1 , result);
     }
-
 
 }

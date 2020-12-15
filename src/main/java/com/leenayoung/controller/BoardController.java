@@ -53,7 +53,7 @@ public class BoardController {
     }
 
     @RequestMapping("/main")
-    public String login() {
+    public String test() {
         return "blogmain_detail";
     }
 }
