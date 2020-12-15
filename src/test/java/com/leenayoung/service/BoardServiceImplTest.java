@@ -21,7 +21,7 @@ public class BoardServiceImplTest {
             board.setTitle("insertBoard Test : " + i);
 //            board.setWriter("Tester : " + i);
             board.setContent("test content : " + i);
-//            board.setCategory("카테고리");
+//            board.setCommunity("카테고리");
 
             boardService.insertBoard(board);
         }
