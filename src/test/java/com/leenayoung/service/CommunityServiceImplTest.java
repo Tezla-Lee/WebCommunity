@@ -1,6 +1,5 @@
 package com.leenayoung.service;
 
-import com.leenayoung.model.Community;
 import com.leenayoung.repository.CommunityRepository;
 import org.junit.Before;
 
