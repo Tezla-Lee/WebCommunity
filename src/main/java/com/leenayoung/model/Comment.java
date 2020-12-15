@@ -1,6 +1,7 @@
 package com.leenayoung.model;
 
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -8,11 +9,12 @@ import java.util.Date;
 
 @Entity
 @Data
+@ToString(exclude = "board")
 public class Comment {
 
     @Id
     @GeneratedValue
-    private long number;
+    private long seq;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID", nullable = false)

@@ -20,9 +20,9 @@ public class Board {
 
     private String title;
 
-    @Column(updatable = false)
     @JoinColumn(name = "USER_ID", nullable = false)
-    private String writer;
+    @ManyToOne
+    private User user;
 
     private String content;
 
@@ -35,8 +35,9 @@ public class Board {
     @ColumnDefault("0")
     private long cnt;
 
-    @JoinColumn(name = "CATEGORY_NAME", nullable = false)
-    private String category;
+    @ManyToOne
+    @JoinColumn(name = "CATEGORY_NUMBER")
+    private Category category;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     private List<Comment> commentList = new ArrayList<>();

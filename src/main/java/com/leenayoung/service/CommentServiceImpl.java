@@ -25,7 +25,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void updateComment(Comment comment) {
-        Comment newComment = commentRepository.findById(comment.getNumber()).get();
+        Comment newComment = commentRepository.findById(comment.getSeq()).get();
 
         newComment.setContent(comment.getContent());
     }
