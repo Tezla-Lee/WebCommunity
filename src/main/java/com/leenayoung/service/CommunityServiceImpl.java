@@ -16,7 +16,7 @@ public class CommunityServiceImpl implements CommunityService {
     @Override
     public int insertCommunity(Community community) {
 
-        if(communityRepo.findByName(community.getName())==null){
+        if (communityRepo.findByName(community.getName()) == null) {
             communityRepo.save(community);
             return 1;
         } else {
@@ -28,7 +28,7 @@ public class CommunityServiceImpl implements CommunityService {
     @Override
     public int updateCommunity(Community community) {
 
-        if(communityRepo.findBySeq(community.getSeq())!= null) {
+        if (communityRepo.findBySeq(community.getSeq()) != null) {
             Community findCommunity = communityRepo.findBySeq(community.getSeq());
             findCommunity.setName(community.getName());
             communityRepo.save(findCommunity);
@@ -51,8 +51,13 @@ public class CommunityServiceImpl implements CommunityService {
     }
 
     @Override
-    public List<Community> getCommunityList() {
-
-        return  (List<Community>) communityRepo.findAll();
+    public Community getCommunity(Community community) {
+        return communityRepo.findBySeq(community.getSeq());
     }
+
+    @Override
+    public List<Community> getCommunityList() {
+        return (List<Community>) communityRepo.findAll();
+    }
+
 }

@@ -1,8 +1,8 @@
 package com.leenayoung.controller;
 
 import com.leenayoung.model.Community;
-import com.leenayoung.repository.BoardRepository;
-import com.leenayoung.repository.CommunityRepository;
+import com.leenayoung.service.BoardService;
+import com.leenayoung.service.CommunityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,36 +13,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class CommunityController {
 
     @Autowired
-    CommunityRepository communityRepository;
+    CommunityService communityService;
 
     @Autowired
-    BoardRepository boardRepository;
+    BoardService boardService;
 
     @GetMapping("/getCommunity")
     public String getCommunity(Community community, Model model) {
-        model.addAttribute("community", community);
-        model.addAttribute("boardList", boardRepository.findBoardByCommunity(community.getName()));
+        model.addAttribute("community", communityService.getCommunity(community));
+        model.addAttribute("boardList", boardService.getBoardList(community));
+        System.out.println(community.toString());
         return "getCommunity";
     }
 
     @PostMapping("/deleteCommunity")
     public String deleteCommunity(Community community) {
-        communityRepository.deleteById(community.getSeq());
+        communityService.deleteCommunity(community);
         return "adminPage.............."; // 나중에 추가
     }
 
     @PostMapping("/insertCommunity")
     public String insertCommunity(Community community) {
-        communityRepository.save(community);
+        communityService.insertCommunity(community);
         return "adminPage..........";
     }
 
     @PostMapping("/updateCommunity")
     public String updateCommunity(Community community) {
-        Community originComm = communityRepository.findById(community.getSeq()).get();
-        originComm.setName(community.getName());
+        communityService.updateCommunity(community);
         return "adminPage........";
     }
-
-
 }

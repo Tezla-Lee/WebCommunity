@@ -35,6 +35,7 @@ public class Board {
     @ColumnDefault("0")
     private long cnt;
 
+
     @ManyToOne
     @JoinColumn(name = "COMMUNITY_NUMBER")
     private Community community;

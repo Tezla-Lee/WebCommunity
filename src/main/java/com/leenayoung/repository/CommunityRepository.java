@@ -5,9 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CommunityRepository extends CrudRepository<Community, Long> {
 
-    public Community findByName(String name);
+    Community findByName(String name);
 
-    public Community findBySeq(Long seq);
+    Community findBySeq(Long seq);
 
 
 }
