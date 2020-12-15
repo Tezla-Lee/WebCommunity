@@ -51,27 +51,27 @@ public class UserServiceImpl {
 
     }
 
-    public int login(User user, HttpSession session) {
-        User findUser = userRepo.findByIdAndPassword(user.getId(), user.getPassword());
+//    public int login(User user, HttpSession session) {
+//        User findUser = userRepo.findByIdAndPassword(user.getId(), user.getPassword());
+////        HttpSession session = request.getSession();
+//
+//        if(user != null) {
+//            session.setAttribute("user", user);
+//            System.out.println("로그인 성공");
+//            return 1;
+//        } else {
+//            System.out.println("id와 password 가 맞지 않습니다");
+//            return -1;
+//        }
+//
+//
+//    }
+//
+//    public int logout(User user, HttpServletRequest request) {
 //        HttpSession session = request.getSession();
-
-        if(user != null) {
-            session.setAttribute("user", user);
-            System.out.println("로그인 성공");
-            return 1;
-        } else {
-            System.out.println("id와 password 가 맞지 않습니다");
-            return -1;
-        }
-
-
-    }
-
-    public int logout(User user, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        session.invalidate();
-        return 1;
-    }
+//        session.invalidate();
+//        return 1;
+//    }
 
 
 
