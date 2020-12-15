@@ -13,11 +13,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity security) throws Exception {
         // 사이트간 요청 위조를 비활성화 시킨다
         security.csrf().disable();
-        security.authorizeRequests().antMatchers("/").permitAll();
+//        security.authorizeRequests().antMatchers("/").permitAll();
 
-        security.formLogin().loginPage("/login").defaultSuccessUrl("/main");
+        security.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccess");
 
-        security.logout().invalidateHttpSession(true).logoutSuccessUrl("/login");
+        security.logout().invalidateHttpSession(true).logoutSuccessUrl("/main");
+
+        security.exceptionHandling().accessDeniedPage("/accessDenied");
+
 
     }
 }
