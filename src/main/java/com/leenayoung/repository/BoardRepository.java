@@ -10,5 +10,5 @@ public interface BoardRepository extends CrudRepository<Board, Long> {
 
     List<Board> findBoardByContentContaining(String keyword);
 
-//    List<Board> findBoardByWriterContaining(String keyword);
+    List<Board> findBoardByCommunity(String community);
 }
