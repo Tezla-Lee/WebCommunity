@@ -7,8 +7,15 @@ public class CategoryServiceImpl {
 
     CategoryRepository categoryRepo;
 
-    public void insertCategory(Category category) {
+    public int insertCategory(Category category) {
 
-        categoryRepo.save(category);
+        if(categoryRepo.findByName(category.getName())!=null){
+            categoryRepo.save(category);
+            return 1;
+        } else {
+            System.out.println("이미 존재하는 이름입니다.");
+            return -1;
+        }
+
     }
 }
