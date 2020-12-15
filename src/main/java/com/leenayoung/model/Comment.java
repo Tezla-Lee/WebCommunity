@@ -19,13 +19,17 @@ public class Comment {
 
     private String content;
 
-//    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "BOARD_SEQ", nullable = false)
-    private long seq;
+    private Board board;
 
-//    @Column(insertable = false)
+    //    @Column(insertable = false)
     @Temporal(value = TemporalType.TIMESTAMP)
     @CreationTimestamp
     private Date regDate;
 
+    public void setBoard(Board board) {
+        this.board = board;
+        board.getCommentList().add(this);
+    }
 }
