@@ -33,7 +33,7 @@ public class User {
     private Date joinDate;
 
 
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     String role;
 
 
