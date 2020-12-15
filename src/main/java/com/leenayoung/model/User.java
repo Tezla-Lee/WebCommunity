@@ -17,20 +17,20 @@ import java.util.Date;
 public class User {
 
     @Id
-    @Column(unique = true, updatable = false)
-    String id;
+    @Column(unique = true, updatable = false, name="User_ID")
+    private String id;
 
     @Column(nullable = false)
-    String password;
+    private String password;
 
     @Column(updatable = false, nullable = false)
-    String name;
+    private String name;
 
     @Temporal(value = TemporalType.TIMESTAMP)
     @CreationTimestamp
 //    @Column(insertable = false, updatable = false, columnDefinition = "date default sysdate")
 //    @ColumnDefault("sysdate")
-    Date joinDate;
+    private Date joinDate;
 
 
     @Column(nullable = false)

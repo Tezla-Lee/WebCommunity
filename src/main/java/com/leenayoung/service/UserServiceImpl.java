@@ -51,9 +51,9 @@ public class UserServiceImpl {
 
     }
 
-    public int login(User user, HttpServletRequest request) {
+    public int login(User user, HttpSession session) {
         User findUser = userRepo.findByIdAndPassword(user.getId(), user.getPassword());
-        HttpSession session = request.getSession();
+//        HttpSession session = request.getSession();
 
         if(user != null) {
             session.setAttribute("user", user);

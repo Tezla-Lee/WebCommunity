@@ -10,13 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-<<<<<<< HEAD
 import javax.persistence.Temporal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-=======
->>>>>>> 03e94a487009bab716b0cdde2810129d79b8409c
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserRepositoryTest {
