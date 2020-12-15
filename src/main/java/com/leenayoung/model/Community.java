@@ -18,7 +18,7 @@ public class Community {
 
     @Id
     @GeneratedValue
-    @Column(name="COMMUNITY_NUMBER")
+    @Column(name="COMMUNITY_SEQ")
     private Long seq;
 
     @Column(nullable = false)
