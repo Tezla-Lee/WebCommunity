@@ -95,6 +95,7 @@ public class UserServiceImplTest {
 
     @Test
     public void login() {
+        
     }
 
     @Test
