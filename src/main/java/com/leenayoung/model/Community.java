@@ -1,6 +1,5 @@
 package com.leenayoung.model;
 
-import jdk.jfr.Name;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,7 +17,7 @@ public class Community {
 
     @Id
     @GeneratedValue
-    @Column(name="COMMUNITY_SEQ")
+    @Column(name="COMMUNITY_SEQ", updatable = false)
     private Long seq;
 
     @Column(nullable = false)

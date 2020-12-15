@@ -25,7 +25,7 @@ public class BoardController {
     @GetMapping("/getBoard")
     public String getBoard(Board board, Model model) {
         model.addAttribute("board", boardService.getBoard(board));
-        return "getCommentList";
+        return "getBoard";
     }
 
     @GetMapping("/reviseBoard")
@@ -54,6 +54,6 @@ public class BoardController {
 
     @RequestMapping("/main")
     public String test() {
-        return "blogmain_detail";
+        return "getCommunity";
     }
 }
