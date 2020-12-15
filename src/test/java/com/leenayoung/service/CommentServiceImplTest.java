@@ -20,8 +20,6 @@ public class CommentServiceImplTest {
         for (int i = 0; i < 10; i++) {
             Comment comment = new Comment();
             comment.setContent("댓글 테스트 " + i);
-            comment.setSeq(1);
-            comment.setWriter("댓글 테스터 " + i);
             commentService.insertComment(comment);
         }
     }

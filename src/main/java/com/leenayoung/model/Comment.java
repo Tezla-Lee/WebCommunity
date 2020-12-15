@@ -14,8 +14,9 @@ public class Comment {
     @GeneratedValue
     private long number;
 
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID", nullable = false)
-    private String writer;
+    private User user;
 
     private String content;
 
