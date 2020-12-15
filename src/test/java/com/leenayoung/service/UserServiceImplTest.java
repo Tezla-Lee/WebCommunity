@@ -95,6 +95,12 @@ public class UserServiceImplTest {
 
     @Test
     public void login() {
+<<<<<<< Updated upstream
+=======
+
+
+        
+>>>>>>> Stashed changes
     }
 
     @Test
