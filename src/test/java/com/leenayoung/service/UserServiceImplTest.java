@@ -86,21 +86,14 @@ public class UserServiceImplTest {
 
         userServiceImpl.deleteUser(user3);
 
-
         boolean result = userRepo.findById(user3.getId()).isPresent();
 
         assertFalse(result);
-
     }
 
     @Test
     public void login() {
-<<<<<<< Updated upstream
-=======
 
-
-        
->>>>>>> Stashed changes
     }
 
     @Test
