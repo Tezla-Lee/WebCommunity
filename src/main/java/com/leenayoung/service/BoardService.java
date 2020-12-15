@@ -1,6 +1,7 @@
 package com.leenayoung.service;
 
 import com.leenayoung.model.Board;
+import com.leenayoung.model.Community;
 
 import java.util.List;
 
@@ -14,5 +15,11 @@ public interface BoardService {
     Board getBoard(Board board);
 
     List<Board> getBoardList(Board board);
+
+    List<Board> getBoardListByTitle(String title);
+
+    List<Board> getBoardListByUser_ID(String writer);
+
+    List<Board> getBoardList(Community community);
 
 }

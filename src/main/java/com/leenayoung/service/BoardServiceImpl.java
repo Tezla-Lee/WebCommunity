@@ -1,6 +1,7 @@
 package com.leenayoung.service;
 
 import com.leenayoung.model.Board;
+import com.leenayoung.model.Community;
 import com.leenayoung.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,20 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public List<Board> getBoardList(Board board) {
         return (List<Board>) boardRepository.findAll();
+    }
+
+    @Override
+    public List<Board> getBoardListByTitle(String title) {
+        return boardRepository.findBoardByTitleContaining(title);
+    }
+
+    @Override
+    public List<Board> getBoardListByUser_ID(String userID) {
+        return boardRepository.findBoardByUser_IdContaining(userID);
+    }
+
+    @Override
+    public List<Board> getBoardList(Community community) {
+        return boardRepository.findBoardByCommunity(community);
     }
 }

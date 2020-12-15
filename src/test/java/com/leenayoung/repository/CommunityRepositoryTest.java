@@ -1,8 +1,6 @@
 package com.leenayoung.repository;
 
 import com.leenayoung.model.Community;
-import org.junit.Before;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +16,20 @@ public class CommunityRepositoryTest {
     @Autowired
     CommunityRepository communityRepo;
 
-    @Before
+    @Test
     public void prepareTest() {
-        Community Community1 = new Community();
-        Community1.setName("Community1");
-        communityRepo.save(Community1);
+        for (int i = 1; i <= 10; i++) {
+            Community community = new Community();
+            community.setName("Community" + i);
+            communityRepo.save(community);
+        }
     }
-
 
 
     @Test
     public void findByName() {
         Community result = communityRepo.findByName("Community1");
-        assertEquals("Community1", result.getName() );
+        assertEquals("Community1", result.getName());
     }
 
     @Test

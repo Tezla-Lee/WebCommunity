@@ -1,10 +1,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>게시 글 목록</title>
+    <title th:value="${community.getName()}">커뮤니티 탭</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
-<body th:align="center">
-<h1 th:text="${community.getName()}"></h1>
+<center>
+<body>
+<table width="700" border="0" cellpadding="0" cellspacing="0" bgcolor="aqua">
+    <tr>
+        <td height=40 colspan="10">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%" height="120" colspan="10" align="center" th:text="${community.getName()}">
+        </td>
+    </tr>
+    <tr>
+        <td height="5" colspan="10">&nbsp;</td>
+    </tr>
+</table>
+
 <table th:align="center" border="1" th:cellpadding="0"
        th:cellspacing="0" th:width="700">
     <tr>
@@ -25,4 +38,5 @@
 <br>
 <!--<a th:href="insertBoard">새글 등록</a>-->
 </body>
+</center>
 </html>

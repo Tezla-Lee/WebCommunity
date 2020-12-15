@@ -11,5 +11,7 @@ public interface CommunityService {
 
     int deleteCommunity(Community community);
 
+    Community getCommunity(Community community);
+
     List<Community> getCommunityList();
 }
