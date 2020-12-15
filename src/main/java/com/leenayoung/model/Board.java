@@ -37,7 +37,7 @@ public class Board {
 
     @ManyToOne
     @JoinColumn(name = "CATEGORY_NUMBER")
-    private Community community;
+    private Category category;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     private List<Comment> commentList = new ArrayList<>();
