@@ -22,4 +22,5 @@ public class Community {
 
     @Column(name="COMMUNITY_NAME", nullable = false)
     private String name;
+    
 }
