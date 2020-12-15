@@ -44,5 +44,6 @@ public class RelationMappingTest {
 
         boardRepository.save(board);
         System.out.println(board.toString());
+        // 흐음
     }
 }
