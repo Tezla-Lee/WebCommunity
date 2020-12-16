@@ -16,12 +16,12 @@ public class loginController {
     @GetMapping("/loginSuccess")
     public String loginSuccess() {
         System.out.println("---> 로그인 성공");
-        return "main";
+        return "redirect:home";
     }
 
     @GetMapping("/accessDenied")
     public String accessDenied() {
         System.out.println("---> 접근불가");
-        return "main";
+        return "redirect:home";
     }
 }
