@@ -15,7 +15,7 @@ public class BoardController {
     @Autowired
     BoardService boardService;
 
-    @GetMapping("/insertBoard")
+//    @GetMapping("/insertBoard")
     public String insertBoard(Board board, Model model) {
         boardService.insertBoard(board);
         model.addAttribute("board", board);
