@@ -11,7 +11,7 @@ import javax.persistence.Column;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class loginController {
+public class LoginController {
 
     @GetMapping("/login")
     public void login() {
