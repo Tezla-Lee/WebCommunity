@@ -20,6 +20,6 @@ public interface BoardService {
 
     List<Board> getBoardListByUser_ID(String writer);
 
-    List<Board> getBoardList(Community community);
+    List<Board> getBoardListByCommunity_Seq(Community community);
 
 }

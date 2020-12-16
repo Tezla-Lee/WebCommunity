@@ -19,7 +19,7 @@ public class MainController {
     @Autowired
     BoardService boardService;
 
-    @GetMapping("/")
+    @GetMapping({"/", "/home"})
     public String main(User user, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("communityList", communityService.getCommunityList());

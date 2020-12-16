@@ -4,39 +4,39 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <center>
-<body>
-<table width="700" border="0" cellpadding="0" cellspacing="0" bgcolor="aqua">
-    <tr>
-        <td height=40 colspan="10">&nbsp;</td>
-    </tr>
-    <tr>
-        <td width="100%" height="120" colspan="10" align="center" th:text="${community.getName()}">
-        </td>
-    </tr>
-    <tr>
-        <td height="5" colspan="10">&nbsp;</td>
-    </tr>
-</table>
+    <body>
+    <table width="700" border="0" cellpadding="0" cellspacing="0" bgcolor="aqua">
+        <tr>
+            <td height=40 colspan="10">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="100%" height="120" colspan="10" align="center" th:text="${community.getName()}">
+            </td>
+        </tr>
+        <tr>
+            <td height="5" colspan="10">&nbsp;</td>
+        </tr>
+    </table>
 
-<table th:align="center" border="1" th:cellpadding="0"
-       th:cellspacing="0" th:width="700">
-    <tr>
-        <th bgcolor="orange" width="100">번호</th>
-        <th bgcolor="orange" width="200">제목</th>
-        <th bgcolor="orange" width="150">작성자</th>
-        <th bgcolor="orange" width="150">등록일</th>
-        <th bgcolor="orange" width="100">조회수</th>
-    </tr>
-    <tr th:each="board : ${boardList}">
-        <td th:text="${board.seq}"></td>
-        <td><a th:href="@{/getBoard(seq=${board.seq})}" th:text="${board.title}"></a></td>
-        <td th:text="${board.getUser().getName()}"></td>
-        <td th:text="${#dates.format(board.getRegDate(), 'yyyy-MM-dd')}"></td>
-        <td th:text="${board.cnt}"></td>
-    </tr>
-</table>
-<br>
-<!--<a th:href="insertBoard">새글 등록</a>-->
-</body>
+    <table th:align="center" border="1" th:cellpadding="0"
+           th:cellspacing="0" th:width="700">
+        <tr>
+            <th bgcolor="orange" width="100" height="25">번호</th>
+            <th bgcolor="orange" width="200">제목</th>
+            <th bgcolor="orange" width="150">작성자</th>
+            <th bgcolor="orange" width="150">등록일</th>
+            <th bgcolor="orange" width="100">조회수</th>
+        </tr>
+        <tr th:each="board : ${boardList}">
+            <td th:text="${board.seq}" height="25"></td>
+            <td><a th:href="@{/getBoard(seq=${board.seq})}" th:text="${board.title}"></a></td>
+            <td th:text="${board.getUser().getName()}"></td>
+            <td th:text="${#dates.format(board.getRegDate(), 'yyyy-MM-dd')}"></td>
+            <td th:text="${board.cnt}"></td>
+        </tr>
+    </table>
+    <br>
+    <!--<a th:href="insertBoard">새글 등록</a>-->
+    </body>
 </center>
 </html>

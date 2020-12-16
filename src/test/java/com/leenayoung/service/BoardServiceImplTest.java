@@ -25,7 +25,7 @@ public class BoardServiceImplTest {
     @Test
     public void testInsertBoard() {
         Community community = new Community();
-        community.setName("ani");
+        community.setSeq(1L);
 
         User user = new User();
         user.setId("user1");
