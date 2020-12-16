@@ -15,7 +15,7 @@ public class CommentServiceImplTest {
     @Autowired
     CommentService commentService;
 
-    @Test
+//    @Test
     public void insertComment() {
         for (int i = 0; i < 10; i++) {
             Comment comment = new Comment();
