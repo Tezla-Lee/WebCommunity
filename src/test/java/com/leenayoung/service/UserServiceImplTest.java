@@ -3,15 +3,14 @@ package com.leenayoung.service;
 import com.leenayoung.model.Role;
 import com.leenayoung.model.User;
 import com.leenayoung.repository.UserRepository;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,7 +23,7 @@ public class UserServiceImplTest {
     UserRepository userRepo;
 
 
-    @Before
+    @Test
     public void beforeTest(){
         User user1 = new User();
         user1.setId("user1");
