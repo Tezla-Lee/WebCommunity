@@ -16,6 +16,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void insertComment(Comment comment) {
         commentRepository.save(comment);
+        System.out.println("insertComment Success !!!!");
     }
 
     @Override

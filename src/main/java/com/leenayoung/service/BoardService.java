@@ -14,6 +14,8 @@ public interface BoardService {
 
     Board getBoard(Board board);
 
+    Board updateBoardCount(Board board);
+
     List<Board> getBoardList(Board board);
 
     List<Board> getBoardListByTitle(String title);

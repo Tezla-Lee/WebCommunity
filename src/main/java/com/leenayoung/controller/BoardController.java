@@ -40,9 +40,7 @@ public class BoardController {
 
     @GetMapping("/getBoard")
     public String getBoard(Board board, Model model) {
-        Board getBoard = boardService.getBoard(board);
-        getBoard.setCnt(board.getCnt() + 1);
-        model.addAttribute("board", boardService.updateBoard(getBoard));
+        model.addAttribute("board", boardService.updateBoardCount(boardService.getBoard(board)));
         return "getBoard";
     }
 
@@ -54,7 +52,7 @@ public class BoardController {
 
     @PostMapping("/updateBoard")
     public String updateBoard(Board board, HttpSession session) {
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2");
+        System.out.println("===> update Board...............");
         System.out.println(board.toString());
         board.setUser((User) session.getAttribute("user"));
         board.setCommunity((Community) session.getAttribute("community"));

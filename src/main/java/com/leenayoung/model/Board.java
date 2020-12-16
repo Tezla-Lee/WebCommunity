@@ -35,11 +35,10 @@ public class Board {
     @ColumnDefault("0")
     private long cnt;
 
-
     @ManyToOne
     @JoinColumn(name = "COMMUNITY_SEQ")
     private Community community;
 
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> commentList = new ArrayList<>();
 }
