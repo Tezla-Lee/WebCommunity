@@ -31,7 +31,7 @@ public class Board {
     @CreationTimestamp
     private Date regDate;
 
-    @Column(insertable = false, updatable = false)
+    @Column(insertable = false)
     @ColumnDefault("0")
     private long cnt;
 
