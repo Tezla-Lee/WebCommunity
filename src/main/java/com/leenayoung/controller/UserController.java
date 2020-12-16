@@ -15,11 +15,12 @@ public class UserController {
     @Autowired
     UserServiceImpl userService;
 
-    @GetMapping("join")
+    @GetMapping("/join")
     public String joinView() {
         return "join";
     }
-    @PostMapping("join")
+
+    @PostMapping("/join")
     public String join(User user) {
         int result = userService.insertUser(user);
 
