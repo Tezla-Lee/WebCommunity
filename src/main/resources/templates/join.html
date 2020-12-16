@@ -6,7 +6,7 @@
 </head>
 <body>
 <form action="join" method="post">
-    <table width="100%" height=320 border="0" cellpadding="0"
+    <table width="250" align="center" height=320 border="0" cellpadding="0"
            cellspacing="0">
         <tr>
             <td height=40 colspan="10">&nbsp;</td>
@@ -15,18 +15,24 @@
             <td width="100%" height="120" colspan="10" align="center"><img
                     src="images/logo.jpg" border="0"></td>
         </tr>
-        <tr>
-            <td height="20" colspan="10" align="center" class="tdcontent">
-                아이디 : <input type="text" name="id" size="15">&nbsp;
-                <p></p>
-                패스워드 : <input type="text" name="password" size="15">
-                <p></p>
+            <td height="20" colspan="10" align="right" class="tdcontent">
+                아이디 : <input type="text" name="id" size="15">
+                <br>
+                <br>
+                패스워드 : <input type="password" name="password" size="15">
+                <br>
+                <br>
+                패스워드확인 : <input type="password" name="password" size="15">
+                <br>
+                <br>
                 이름 : <input type="text" name="name" size="15">
             </td>
         </tr>
+
         <tr>
             <td height="40" colspan="10" align="center">
-                <input type="submit" value="회원가입">
+                <br>
+                <input type="submit" value="회원가입">&nbsp;&nbsp;&nbsp;
                 <button type="button" onclick="location.href='login'" >취소</button>
 
             </td>
