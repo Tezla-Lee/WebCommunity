@@ -1,6 +1,8 @@
 package com.leenayoung.repository;
 
+import com.leenayoung.config.BoardUserDetailsService;
 import com.leenayoung.model.Board;
+import net.bytebuddy.asm.Advice;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,9 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BoardRepositoryTest {
+
+    @Autowired
+    private BoardUserDetailsService userDetailsService;
 
     @Autowired
     BoardRepository boardRepository;
