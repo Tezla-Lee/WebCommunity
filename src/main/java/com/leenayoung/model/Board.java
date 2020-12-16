@@ -37,7 +37,7 @@ public class Board {
 
 
     @ManyToOne
-    @JoinColumn(name = "COMMUNITY_NUMBER")
+    @JoinColumn(name = "COMMUNITY_SEQ")
     private Community community;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)

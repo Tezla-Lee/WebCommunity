@@ -5,16 +5,13 @@ import com.leenayoung.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.net.http.HttpRequest;
-
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepo;
 
+    @Override
     public int insertUser(User user) {
         if(userRepo.findById(user.getId()).isPresent()){
             System.out.println("중복 id");
@@ -25,6 +22,7 @@ public class UserServiceImpl {
         }
     }
 
+    @Override
     public int updateUserPassword(User user) {
         if(userRepo.findById(user.getId()).isPresent()){
             User findUser = userRepo.findById(user.getId()).get();
@@ -37,6 +35,7 @@ public class UserServiceImpl {
         }
     }
 
+    @Override
     public int deleteUser(User user) {
         if(userRepo.findByIdAndPasswordAndName(user.getId(),user.getPassword(),user.getName())
             != null ){
@@ -49,6 +48,11 @@ public class UserServiceImpl {
         }
 
 
+    }
+
+    @Override
+    public User getUser(User user) {
+        return userRepo.findById(user.getId()).get();
     }
 
 }

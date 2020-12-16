@@ -1,5 +1,6 @@
 package com.leenayoung.controller;
 
+import com.leenayoung.model.Board;
 import com.leenayoung.model.Community;
 import com.leenayoung.service.BoardService;
 import com.leenayoung.service.CommunityService;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class CommunityController {
@@ -20,9 +23,14 @@ public class CommunityController {
 
     @GetMapping("/getCommunity")
     public String getCommunity(Community community, Model model) {
-        model.addAttribute("community", communityService.getCommunity(community));
-        model.addAttribute("boardList", boardService.getBoardList(community));
-        System.out.println(community.toString());
+        Community getCom = communityService.getCommunity(community);
+        model.addAttribute("community", getCom);
+
+        List<Board> boardList = boardService.getBoardList(getCom);
+        model.addAttribute("boardList", boardList);
+
+        System.out.println(getCom.toString());
+        System.out.println(boardList);
         return "getCommunity";
     }
 
