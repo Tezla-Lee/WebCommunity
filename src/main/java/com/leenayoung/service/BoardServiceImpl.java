@@ -6,6 +6,7 @@ import com.leenayoung.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,13 +26,17 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void updateBoard(Board board) {
-        Board newBoard = boardRepository.findById(board.getSeq()).get();
-        newBoard.setTitle(board.getTitle());
-        newBoard.setContent(board.getContent());
-        newBoard.setCnt(board.getCnt());
-        newBoard.setCommunity(board.getCommunity());
-        boardRepository.save(newBoard);
+    public Board updateBoard(Board board) {
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        Board updateBoard = boardRepository.findById(board.getSeq()).get();
+        System.out.println(updateBoard.toString());
+        updateBoard.setTitle(board.getTitle());
+        updateBoard.setContent(board.getContent());
+        updateBoard.setCnt(board.getCnt());
+        updateBoard.setRegDate(new Date());
+        System.out.println(updateBoard.toString());
+        boardRepository.save(updateBoard);
+        return updateBoard;
     }
 
     @Override

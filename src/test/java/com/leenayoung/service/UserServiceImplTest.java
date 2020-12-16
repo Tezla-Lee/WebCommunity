@@ -29,7 +29,7 @@ public class UserServiceImplTest {
         user1.setId("user1");
         user1.setPassword("user1");
         user1.setRole(Role.ROLE_MEMBER);
-        user1.setName("user");
+        user1.setName("user1");
 //        user1.setJoinDate(new Date().setTime(123123););
         userServiceImpl.insertUser(user1);
 

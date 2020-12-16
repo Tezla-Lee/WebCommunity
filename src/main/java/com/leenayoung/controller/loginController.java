@@ -21,7 +21,7 @@ public class loginController {
     @GetMapping("/loginSuccess")
     public String loginSuccess(@AuthenticationPrincipal(expression = "user") User user, HttpSession session) {
         System.out.println("---> 로그인 성공");
-        session.setAttribute("user",user);
+        session.setAttribute("user", user);
         System.out.println(user);
         return "redirect:home";
     }

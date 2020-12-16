@@ -10,7 +10,7 @@ public interface BoardService {
 
     void deleteBoard(Board board);
 
-    void updateBoard(Board board);
+    Board updateBoard(Board board);
 
     Board getBoard(Board board);
 
