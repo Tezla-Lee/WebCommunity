@@ -8,6 +8,7 @@ public class loginController {
     public void login() {
         System.out.println("로그인 요청");
     }
+
     @GetMapping("/loginSuccess")
     public void loginSuccess() {
         System.out.println("---> 로그인 성공");
@@ -16,6 +17,6 @@ public class loginController {
     @GetMapping("/accessDenied")
     public String accessDenied() {
         System.out.println("---> 접근불가");
-        return "/main";
+        return "main";
     }
 }
