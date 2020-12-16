@@ -8,33 +8,45 @@
 <body>
 <center>
 
-    <table width="80%" border="0" cellpadding="0" cellspacing="0">
+    <table width="90%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-            <td width="100%" height="120" colspan="10" align="right">
-                  <span th:if="${session.user!=null}">
-            <h4>
-                <font color='red'><span th:text="${session.user.getId()}"></span></font>님 환영합니다
-                <p></p>
-                <button type="button" onclick="location.href='logout'">로그아웃</button>
-            </h4>
-    </span>
+            <td width="10%">
+                <table bgcolor="#1e90ff" cellpadding="0" cellspacing="0" th:height="120">
+                    <tr>
+                        <td width="250" align="center">커뮤니티 로고 자리</td>
+                    </tr>
+                </table>
+            </td>
+            <td width="85%" height="120" colspan="10" align="right" bgcolor="#8fbc8f">
+                <br>
+                <span th:if="${session.user!=null}">
+                    <h4>
+                        <font color='red'><span th:text="${session.user.getId()}"></span></font>님 환영합니다
+                        <p></p>
+                        <button type="button" onclick="location.href='logout'">로그아웃</button>
+                    </h4>
+                </span>
                 <span th:if="${session.user==null}">
-             <h4>
-                    <font color='red'></font>게스트님 환영합니다
-                    <p></p>
-                <button type="button" onclick="location.href='login'">로그인</button>
-                 <button type="button" onclick="location.href='join'">회원가입</button>
-             </h4>
-    </span>
+                    <h4>
+                        <font color='red'></font>게스트님 환영합니다
+                        <p></p>
+                        <button type="button" onclick="location.href='login'">로그인</button>
+                        <button type="button" onclick="location.href='join'">회원가입</button>
+                    </h4>
+                </span>
             </td>
         </tr>
         <tr>
-            <td style="vertical-align: top" width="85%" colspan="10" align="center" bgcolor="aqua">
-                <table bgcolor="#7fffd4" cellpadding="0" cellspacing="0" th:height="80" width="700">
-                    <tr>
-                        <td align="center">커뮤니티 로고 자리</td>
+            <td width="10%">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tr th:each="community : ${communityList}" bgcolor="#7fff00">
+                        <td width="250" class="tablelabel"><a th:href="@{/getCommunity(seq=${community.getSeq()})}"
+                                                              th:text="${community.getName()}"></a></td>
                     </tr>
                 </table>
+            </td>
+            <td style="vertical-align: top" width="85%" colspan="10" align="center" bgcolor="aqua">
+                <br>
                 <br>
                 <form th:action="mainSearch" method="get">
                     <table bgcolor="#ff7f50" cellpadding='0' cellspacing='0' width='700'>
@@ -60,7 +72,7 @@
                     </table>
                 </form>
                 <!-- 블로그 검색 끝 -->
-
+                <br>
                 <!-- 게시글 리스트 -->
                 <table bgcolor="#a9a9a9" width="720" height="100" border="1" cellpadding="0" cellspacing="0">
                     <tr>
@@ -76,14 +88,6 @@
                         </td>
                         <td class="tablelabel" align="center" th:text="${board.getUser().getId()}"></td>
                         <td class="tablelabel" align="center" th:text="${board.getRegDate()}"></td>
-                    </tr>
-                </table>
-            </td>
-            <td width="10%">
-                <table border="0" cellpadding="0" cellspacing="0">
-                    <tr th:each="community : ${communityList}" bgcolor="#7fff00">
-                        <td width="150" class="tablelabel"><a th:href="@{/getCommunity(seq=${community.getSeq()})}"
-                                                              th:text="${community.getName()}"></a></td>
                     </tr>
                 </table>
             </td>
