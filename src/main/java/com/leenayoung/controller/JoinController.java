@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class UserController {
+public class JoinController {
 
     @Autowired
     UserServiceImpl userService;
