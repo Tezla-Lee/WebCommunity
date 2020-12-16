@@ -12,10 +12,12 @@
             <tr>
                 <td height=40 colspan="10">&nbsp;</td>
             </tr>
-            <h3>
-                <font color='red'>환영합니다</font><a
+            <span th:if="${user.getId()!=null}">
+                <h3>
+                    <font color='red'><span th:text="${user.getId()}"></span></font>환영합니다<a
                     href='logout'>Log-out</a>
-            </h3>
+                </h3>
+             </span>
             <tr>
                 <td width="100%" height="120" colspan="10" align="center">
                     <!--<img src="images/logo.jpg" border="0">-->커뮤니티 로고 자리
