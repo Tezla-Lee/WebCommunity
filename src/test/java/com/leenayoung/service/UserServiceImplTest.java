@@ -4,6 +4,7 @@ import com.leenayoung.model.Role;
 import com.leenayoung.model.User;
 import com.leenayoung.repository.UserRepository;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -93,6 +94,16 @@ public class UserServiceImplTest {
 
         assertFalse(result);
 
+    }
+
+    @Test
+    public void isInputEmpty() {
+        User user = new User();
+        user.setId("");
+        user.setPassword("");
+        user.setName("");
+
+        Assertions.assertTrue(userServiceImpl.isInputEmpty(user));
     }
 
 }

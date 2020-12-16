@@ -18,10 +18,19 @@ public class UserServiceImpl implements UserService {
             return -1;
         } else if(isPwConfirmDifferent(user, pwConfirm)){
             return -2;
+        } else if(isInputEmpty(user)){
+            return -3;
         } else {
             userRepo.save(user);
             return 1;
         }
+    }
+
+    public boolean isInputEmpty(User user) {
+
+        return user.getId().length() == 0
+                && user.getPassword().length() == 0
+                 && user.getName().length() == 0 ;
     }
 
     public boolean isPwConfirmDifferent(User user, String pwConfirm) {
