@@ -3,7 +3,7 @@ package com.leenayoung.service;
 import com.leenayoung.model.User;
 
 public interface UserService {
-    int insertUser(User user);
+    int insertUser(User user, String pwConfirm);
 
     int updateUserPassword(User user);
 

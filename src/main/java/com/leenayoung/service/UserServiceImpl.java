@@ -12,15 +12,27 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepo;
 
     @Override
-    public int insertUser(User user) {
-        if(userRepo.findById(user.getId()).isPresent()){
-            System.out.println("중복 id");
+    public int insertUser(User user, String pwConfirm) {
+
+        if(idIdOverlap(user)){
             return -1;
+        } else if(isPwConfirmDifferent(user, pwConfirm)){
+            return -2;
         } else {
             userRepo.save(user);
             return 1;
         }
     }
+
+    public boolean isPwConfirmDifferent(User user, String pwConfirm) {
+
+        return !user.getPassword().equals(pwConfirm);
+    }
+
+    public boolean idIdOverlap(User user) {
+        return userRepo.findById(user.getId()).isPresent();
+    }
+
 
     @Override
     public int updateUserPassword(User user) {
@@ -30,7 +42,6 @@ public class UserServiceImpl implements UserService {
             userRepo.save(findUser);
             return 1;
         } else {
-            System.out.println("수정할 id가 없다");
             return -1;
         }
     }
@@ -43,7 +54,6 @@ public class UserServiceImpl implements UserService {
             userRepo.delete(findUser);
             return 1;
         } else {
-            System.out.println("삭제할 id가 없다");
             return -1;
         }
 

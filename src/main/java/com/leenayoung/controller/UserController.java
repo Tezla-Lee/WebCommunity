@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,10 +23,11 @@ public class UserController {
     }
 
     @PostMapping("/join")
-    public String join(User user, Model model) {
-        int result = userService.insertUser(user);
+    public String join(User user, Model model,@RequestParam("passwordConfirm") String pwConfirm) {
 
-        if(result > 0  ) {
+        int result = userService.insertUser(user, pwConfirm);
+
+        if(result > 0 )  {
             model.addAttribute("user", user);
             return "joinSuccess";
         } else {

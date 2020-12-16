@@ -30,22 +30,25 @@ public class UserServiceImplTest {
         user1.setPassword("user1");
         user1.setRole(Role.ROLE_MEMBER);
         user1.setName("user1");
+        String pwConfirm1 = "user1";
 //        user1.setJoinDate(new Date().setTime(123123););
-        userServiceImpl.insertUser(user1);
+        userServiceImpl.insertUser(user1, pwConfirm1);
 
         User user2 = new User();
         user2.setId("user2");
         user2.setPassword("user2");
         user2.setRole(Role.ROLE_MEMBER);
         user2.setName("user2");
-        userServiceImpl.insertUser(user2);
+        String pwConfirm2 = "user2";
+        userServiceImpl.insertUser(user2, pwConfirm2);
 
         User user3 = new User();
         user3.setId("user3");
         user3.setPassword("user3");
         user3.setRole(Role.ROLE_MEMBER);
         user3.setName("user3");
-        userServiceImpl.insertUser(user3);
+        String pwConfirm3 = "user3";
+        userServiceImpl.insertUser(user3, pwConfirm3);
     }
 
     @Test
@@ -55,8 +58,9 @@ public class UserServiceImplTest {
         user1.setPassword("user1");
         user1.setRole(Role.ROLE_MEMBER);
         user1.setName("user");
+        String pwConfirm = "user1";
 
-        int result = userServiceImpl.insertUser(user1);
+        int result = userServiceImpl.insertUser(user1, pwConfirm);
 
         assertEquals(-1, result );
     }
