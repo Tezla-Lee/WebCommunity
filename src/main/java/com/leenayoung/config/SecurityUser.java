@@ -7,7 +7,7 @@ public class SecurityUser extends User { //security.core.userdetails.user
 
     public SecurityUser(com.leenayoung.model.User user) {
         super(user.getId(),
-                user.getPassword()
+                "{noop}"+user.getPassword()
                 , AuthorityUtils.createAuthorityList(user.getRole().toString()));
 
     }

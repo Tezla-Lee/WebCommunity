@@ -14,8 +14,9 @@ public class loginController {
     }
 
     @GetMapping("/loginSuccess")
-    public void loginSuccess() {
+    public String loginSuccess() {
         System.out.println("---> 로그인 성공");
+        return "main";
     }
 
     @GetMapping("/accessDenied")
