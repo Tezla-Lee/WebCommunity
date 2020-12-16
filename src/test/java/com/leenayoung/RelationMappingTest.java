@@ -2,6 +2,7 @@ package com.leenayoung;
 
 import com.leenayoung.model.Board;
 import com.leenayoung.model.Comment;
+import com.leenayoung.model.Role;
 import com.leenayoung.model.User;
 import com.leenayoung.repository.BoardRepository;
 import com.leenayoung.repository.CommentRepository;
@@ -31,7 +32,7 @@ public class RelationMappingTest {
         user.setId("테스트 id");
         user.setPassword("테스트 pw");
         user.setName("유저 이름");
-        user.setRole("ADMIN");
+        user.setRole(Role.ROLE_MEMBER);
         userRepository.save(user);
 
         Board board = new Board();

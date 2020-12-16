@@ -1,5 +1,6 @@
 package com.leenayoung.repository;
 
+import com.leenayoung.model.Role;
 import com.leenayoung.model.User;
 
 
@@ -26,7 +27,7 @@ public class UserRepositoryTest {
         User user1 = new User();
         user1.setId("user1");
         user1.setPassword("user1");
-        user1.setRole("user");
+        user1.setRole(Role.ROLE_MEMBER);
         user1.setName("user");
         userRepo.save(user1);
     }

@@ -32,9 +32,8 @@ public class User {
 //    @ColumnDefault("sysdate")
     private Date joinDate;
 
-
-    @Column(nullable = false)
-    String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 
 }

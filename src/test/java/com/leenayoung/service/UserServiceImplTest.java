@@ -1,5 +1,6 @@
 package com.leenayoung.service;
 
+import com.leenayoung.model.Role;
 import com.leenayoung.model.User;
 import com.leenayoung.repository.UserRepository;
 import org.junit.Before;
@@ -28,7 +29,7 @@ public class UserServiceImplTest {
         User user1 = new User();
         user1.setId("user1");
         user1.setPassword("user1");
-        user1.setRole("user");
+        user1.setRole(Role.ROLE_MEMBER);
         user1.setName("user");
 //        user1.setJoinDate(new Date().setTime(123123););
         userServiceImpl.insertUser(user1);
@@ -36,14 +37,14 @@ public class UserServiceImplTest {
         User user2 = new User();
         user2.setId("user2");
         user2.setPassword("user2");
-        user2.setRole("user");
+        user2.setRole(Role.ROLE_MEMBER);
         user2.setName("user2");
         userServiceImpl.insertUser(user2);
 
         User user3 = new User();
         user3.setId("user3");
         user3.setPassword("user3");
-        user3.setRole("user");
+        user3.setRole(Role.ROLE_MEMBER);
         user3.setName("user3");
         userServiceImpl.insertUser(user3);
     }
@@ -53,7 +54,7 @@ public class UserServiceImplTest {
         User user1 = new User();
         user1.setId("user1");
         user1.setPassword("user1");
-        user1.setRole("user");
+        user1.setRole(Role.ROLE_MEMBER);
         user1.setName("user");
 
         int result = userServiceImpl.insertUser(user1);
@@ -91,11 +92,4 @@ public class UserServiceImplTest {
 
     }
 
-    @Test
-    public void login() {
-    }
-
-    @Test
-    public void logout() {
-    }
 }
