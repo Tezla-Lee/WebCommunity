@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -31,32 +30,32 @@ public class MainController {
         return "main";
     }
 
-    @PostMapping({"/", "/home"})
+    @GetMapping("/mainSearch")
     public String main(User user, Model model, @RequestParam("searchCondition") String searchCondition, @RequestParam("searchKeyword") String searchKeyword) {
         System.out.println("===> main Post.............");
-        System.out.println(searchCondition);
+        System.out.println("searchCondition : " + searchCondition);
+        System.out.println("searchKeyword : " + searchKeyword);
         model.addAttribute("user", user);
         model.addAttribute("communityList", communityService.getCommunityList());
         List<Board> boardList;
-        if (searchCondition == null) {
-            boardList = null;
-        } else {
-            switch (searchCondition) {
-                case "title":
-                    boardList = boardService.getBoardListByTitle(searchKeyword);
-                    break;
-                case "content":
-                    boardList = boardService.getBoardListByContent(searchKeyword);
-                    break;
-                case "writer":
-                    boardList = boardService.getBoardListByUser_ID(searchKeyword);
-                    break;
-                case "community":
-                    boardList = boardService.getBoardListByCommunity_Name(searchKeyword);
-                    break;
-                default:
-                    boardList = null;
-            }
+        switch (searchCondition) {
+            case "title":
+                boardList = boardService.getBoardListByTitle(searchKeyword);
+                break;
+            case "content":
+                boardList = boardService.getBoardListByContent(searchKeyword);
+                break;
+            case "writer":
+                boardList = boardService.getBoardListByUser_ID(searchKeyword);
+                break;
+            case "community":
+                boardList = boardService.getBoardListByCommunity_Name(searchKeyword);
+                break;
+            default:
+                boardList = null;
+        }
+        for (Board board : boardList) {
+            System.out.println(board.toString());
         }
         model.addAttribute("boardList", boardList);
         return "main";
