@@ -56,6 +56,6 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public List<Board> getBoardList(Community community) {
-        return boardRepository.findBoardByCommunity(community);
+        return boardRepository.findBoardByCommunity(community.getSeq());
     }
 }
