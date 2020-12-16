@@ -27,7 +27,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Board updateBoard(Board board) {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println("===> updateBoard ....................");
         Board updateBoard = boardRepository.findById(board.getSeq()).get();
         System.out.println(updateBoard.toString());
         updateBoard.setTitle(board.getTitle());
@@ -41,7 +41,15 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Board getBoard(Board board) {
+        System.out.println("===> getBoard................");
         return boardRepository.findById(board.getSeq()).get();
+    }
+
+    @Override
+    public Board updateBoardCount(Board board) {
+        board.setCnt(board.getCnt() + 1);
+        boardRepository.save(board);
+        return board;
     }
 
     @Override

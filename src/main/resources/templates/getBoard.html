@@ -5,37 +5,84 @@
 </head>
 <body th:align="center">
 <h1>게시글 상세</h1>
-<form th:action="@{updateBoard}" method="post">
-    <input name="seq" type="hidden" th:value="${board.seq}">
-    <table th:align="center" border="1" th:cellpadding="0"
-           th:cellspacing="0">
-        <tr>
-            <td align="center" bgcolor="orange" th:text="제목" width="80" height="30"></td>
-            <td th:text="${board.title}"></td>
-        </tr>
-        <tr>
-            <td align="center" bgcolor="orange" th:text="작성자" height="30"></td>
-            <td th:text="${board.getUser().getId()}"></td>
-        </tr>
-        <tr>
-            <td align="center" bgcolor="orange" th:text="내용" height="30">
-            <td name="content" th:text="${board.content}" width="500" height="400"></td>
-<!--            <td><textarea name="content" th:text="${board.content}"-->
-<!--                          cols="40" rows="10"></textarea></td>-->
-        </tr>
-        <tr>
-            <td align="center" bgcolor="orange" th:text="등록일" height="30"></td>
-            <td th:text="${board.regDate}"></td>
-        </tr>
-        <tr>
-            <td align="center" bgcolor="orange" th:text="조회수" height="30"></td>
-            <td th:text="${board.cnt}"></td>
-        </tr>
-    </table>
-</form>
-<span th:if="${session.user.getId().equals(board.getUser().getId())}and${session.user.getPassword().equals(board.getUser().getPassword())}">
-<a th:href="@{/updateBoard(seq=${board.getSeq()})}">글 수정하기</a>&nbsp;&nbsp;&nbsp;
+
+<input name="seq" type="hidden" th:value="${board.seq}">
+<table th:align="center" border="1" th:cellpadding="0" th:cellspacing="0" width="700">
+    <tr>
+        <td align="center" bgcolor="orange" th:text="제목" width="80" height="30"></td>
+        <td th:text="${board.title}"></td>
+    </tr>
+    <tr>
+        <td align="center" bgcolor="orange" th:text="작성자" height="30"></td>
+        <td th:text="${board.getUser().getId()}"></td>
+    </tr>
+    <tr>
+        <td align="center" bgcolor="orange" th:text="내용" height="30">
+        <td style="vertical-align: text-top" name="content" th:text="${board.content}" width="500" height="300"></td>
+        <!--            <td><textarea name="content" th:text="${board.content}"-->
+        <!--                          cols="40" rows="10"></textarea></td>-->
+    </tr>
+    <tr>
+        <td align="center" bgcolor="orange" th:text="등록일" height="30"></td>
+        <td th:text="${board.regDate}"></td>
+    </tr>
+    <tr>
+        <td align="center" bgcolor="orange" th:text="조회수" height="30"></td>
+        <td th:text="${board.cnt}"></td>
+    </tr>
+</table>
+<br>
+<a th:href="@{/getCommunity(seq=${board.community.getSeq()})}">글 목록 보기</a>
+<br>
+<!-- 새 덧글 시작 -->
+<span th:if="${session.user != null}">
+    <form th:action="@{/insertComment}" method="post">
+        <input name="seq" type="hidden" th:value="${board.seq}">
+<table width="500" height="20" border="0" cellpadding="0" cellspacing="0" align="center">
+    <tr>
+        <td height="5">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="120" th:text="${session.user.getId()}" class="inputtext" type="text" size="15" name="name"></td>
+        <!--        <td width="380" class="tdcontent"></td>-->
+    </tr>
+    <tr>
+        <td colspan="10" class="tdcontent">
+            <textarea name="content" class="inputtextarea" rows="3" cols="80"></textarea></td>
+    </tr>
+    <tr>
+        <td height="5">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="10" align="right">&nbsp;<input type="submit" value="덧글추가"></td>
+    </tr>
+</table>
+    </form>
+    </span>
+<!-- 새 덧글 끝 -->
+<br>
+<!-- 덧글 보여주기 시작 -->
+<table height="20" border="0" cellpadding="0" cellspacing="0" width="700" align="center" th:each="comment : ${board.commentList}">
+    <tr bgcolor="#7fffd4">
+        <td th:text="'작성자 : ' + ${comment.getUser().getId()}"></td>
+    </tr>
+    <tr bgcolor="#ffebcd">
+        <td th:text="${comment.getContent()}"></td>
+    </tr>
+    <tr bgcolor="#ff7f50">
+        <td th:text="${comment.getRegDate()}" align="right"></td>
+    </tr>
+    <hr width="720">
+    <br>
+</table>
+<!-- 덧글 보여주기  끝 -->
+
+
+<span th:if="${session.user != null}">
+    <span th:if="${session.user.getId().equals(board.getUser().getId())}and${session.user.getPassword().equals(board.getUser().getPassword())}">
+        <a th:href="@{/updateBoard(seq=${board.getSeq()})}">글 수정하기</a>&nbsp;&nbsp;&nbsp;
+    </span>
 </span>
-<a th:href="@{/getCommunity(seq=${board.community.getSeq()})}">글목록</a>
+
 </body>
 </html>

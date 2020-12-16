@@ -33,6 +33,6 @@ public class Comment {
 
     public void setBoard(Board board) {
         this.board = board;
-        board.getCommentList().add(this);
+//        board.getCommentList().add(this);
     }
 }

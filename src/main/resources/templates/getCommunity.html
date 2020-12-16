@@ -21,14 +21,14 @@
     <table th:align="center" border="1" th:cellpadding="0"
            th:cellspacing="0" th:width="700">
         <tr>
-            <th bgcolor="orange" width="100" height="25">번호</th>
-            <th bgcolor="orange" width="200">제목</th>
-            <th bgcolor="orange" width="150">작성자</th>
-            <th bgcolor="orange" width="150">등록일</th>
-            <th bgcolor="orange" width="100">조회수</th>
+            <!--            <th bgcolor="orange" width="100" height="25">번호</th>-->
+            <th bgcolor="orange" width="300">제목</th>
+            <th bgcolor="orange" width="100">작성자</th>
+            <th bgcolor="orange" width="100">등록일</th>
+            <th bgcolor="orange" width="50">조회수</th>
         </tr>
-        <tr th:each="board : ${boardList}">
-            <td th:text="${board.seq}" height="25"></td>
+        <tr th:each="board : ${boardList}" th:height="25">
+            <!--            <td th:text="${board.seq}" height="25"></td>-->
             <td><a th:href="@{/getBoard(seq=${board.seq})}" th:text="${board.title}"></a></td>
             <td th:text="${board.getUser().getName()}"></td>
             <td th:text="${#dates.format(board.getRegDate(), 'yyyy-MM-dd')}"></td>
