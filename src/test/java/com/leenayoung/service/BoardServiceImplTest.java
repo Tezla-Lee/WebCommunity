@@ -14,14 +14,12 @@ public class BoardServiceImplTest {
     @Autowired
     BoardService boardService;
 
-    @Test
+//    @Test
     public void testInsertBoard() {
         for (int i = 0; i < 10; i++) {
             Board board = new Board();
             board.setTitle("insertBoard Test : " + i);
-//            board.setWriter("Tester : " + i);
             board.setContent("test content : " + i);
-//            board.setCategory("카테고리");
 
             boardService.insertBoard(board);
         }
