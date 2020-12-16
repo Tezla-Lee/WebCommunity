@@ -46,6 +46,14 @@ public class BoardServiceImplTest {
 
     @Test
     public void updateBoard() {
+        Board board = new Board();
+        board.setSeq(12L);
+        Board updateBoard = boardService.getBoard(board);
+
+        updateBoard.setTitle("update Board");
+        updateBoard.setContent("update content");
+
+        boardService.updateBoard(updateBoard);
     }
 
     @Test

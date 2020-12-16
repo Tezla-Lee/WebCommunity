@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -22,12 +23,14 @@ public class CommunityController {
     BoardService boardService;
 
     @GetMapping("/getCommunity")
-    public String getCommunity(Community community, Model model) {
+    public String getCommunity(Community community, Model model, HttpSession session) {
         Community getCom = communityService.getCommunity(community);
         model.addAttribute("community", getCom);
 
         List<Board> boardList = boardService.getBoardListByCommunity_Seq(getCom);
         model.addAttribute("boardList", boardList);
+
+        session.setAttribute("community", getCom);
 
         System.out.println(getCom.toString());
         System.out.println(boardList);

@@ -33,7 +33,9 @@
         </tr>
     </table>
 </form>
+<span th:if="${session.user.getId().equals(board.getUser().getId())}and${session.user.getPassword().equals(board.getUser().getPassword())}">
 <a th:href="@{/updateBoard(seq=${board.getSeq()})}">글 수정하기</a>&nbsp;&nbsp;&nbsp;
+</span>
 <a th:href="@{/getCommunity(seq=${board.community.getSeq()})}">글목록</a>
 </body>
 </html>

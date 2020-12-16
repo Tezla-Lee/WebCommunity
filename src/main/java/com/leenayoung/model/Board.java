@@ -15,7 +15,7 @@ public class Board {
 
     @Id
     @GeneratedValue
-    @Column(name = "BOARD_SEQ")
+    @Column(name = "BOARD_SEQ", updatable = false)
     private Long seq;
 
     private String title;
@@ -40,6 +40,6 @@ public class Board {
     @JoinColumn(name = "COMMUNITY_SEQ")
     private Community community;
 
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Comment> commentList = new ArrayList<>();
 }

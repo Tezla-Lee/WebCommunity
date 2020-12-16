@@ -4,14 +4,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body th:align="center">
-<h1>게시글 등록</h1>
-<form th:action="insertBoard" method="post">
+<h1>게시글 수정하기</h1>
+<form th:action="updateBoard" method="post">
     <table th:align="center" border="1" th:cellpadding="0"
            th:cellspacing="0">
+        <input name="seq" type="hidden" size="50" th:value="${board.getSeq()}">
         <tr>
             <td bgcolor="orange" th:text="제목" width="80"></td>
             <td><input name="title" type="text" size="50" th:value="${board.getTitle()}"></td>
         </tr>
+<!--        <tr>-->
+<!--            <td bgcolor="orange" th:text="커뮤니티" width="80"></td>-->
+<!--            <td name="name" th:text="${community.getName()}" type="text" size="50"></td>-->
+<!--        </tr>-->
         <tr>
             <td bgcolor="orange" th:text="작성자"></td>
             <td name="writer" type="text" size="10" th:text="${board.getUser().getId()}"></td>

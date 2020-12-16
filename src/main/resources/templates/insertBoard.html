@@ -13,8 +13,12 @@
             <td><input name="title" type="text" size="50"></td>
         </tr>
         <tr>
+            <td bgcolor="orange" th:text="커뮤니티" width="80"></td>
+            <td name="name" th:text="${community.getName()}" type="text" size="50"></td>
+        </tr>
+        <tr>
             <td bgcolor="orange" th:text="작성자"></td>
-            <td><input name="writer" type="text" size="10"></td>
+            <td th:text="${session.user.getId()}" type="text" size="10"></td>
         </tr>
         <tr>
             <td bgcolor="orange" th:text="내용">
