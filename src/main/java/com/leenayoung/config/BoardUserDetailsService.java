@@ -20,9 +20,10 @@ public class BoardUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
+
         Optional<User> findUser = userRepo.findById(username);
-        if(findUser.isPresent()) {
-            throw new UsernameNotFoundException(username + "사용자가 없네요.");
+        if(findUser.isEmpty()) {
+            throw new UsernameNotFoundException(username + "사용자가 없습니다.");
         } else {
             User user = findUser.get();
             return new SecurityUser(user);
