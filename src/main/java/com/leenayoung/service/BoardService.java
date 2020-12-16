@@ -16,7 +16,7 @@ public interface BoardService {
 
     Board updateBoardCount(Board board);
 
-    List<Board> getBoardList(Board board);
+    List<Board> getBoardList();
 
     List<Board> getBoardListByTitle(String title);
 
@@ -24,4 +24,7 @@ public interface BoardService {
 
     List<Board> getBoardListByCommunity_Seq(Community community);
 
+    List<Board> getBoardListByContent(String content);
+
+    List<Board> getBoardListByCommunity_Name(String name);
 }

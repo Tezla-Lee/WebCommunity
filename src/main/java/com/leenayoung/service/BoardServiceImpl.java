@@ -53,7 +53,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public List<Board> getBoardList(Board board) {
+    public List<Board> getBoardList() {
         return (List<Board>) boardRepository.findAll();
     }
 
@@ -70,5 +70,15 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public List<Board> getBoardListByCommunity_Seq(Community community) {
         return boardRepository.findBoardByCommunity_Seq(community.getSeq());
+    }
+
+    @Override
+    public List<Board> getBoardListByContent(String content) {
+        return boardRepository.findBoardByContentContaining(content);
+    }
+
+    @Override
+    public List<Board> getBoardListByCommunity_Name(String name) {
+        return boardRepository.findBoardByCommunity_Name(name);
     }
 }

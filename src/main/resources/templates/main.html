@@ -31,7 +31,7 @@
             </tr>
 
             <tr>
-                <td width="100%" height="120" colspan="10" align="center"  bgcolor="aqua">
+                <td width="100%" height="120" colspan="10" align="center" bgcolor="aqua">
                     <!--<img src="images/logo.jpg" border="0">-->커뮤니티 로고 자리
                 </td>
             </tr>
@@ -41,7 +41,7 @@
                 </a>
             </tr>
         </table>
-        <form action='getBoardList.do' method='post'>
+        <form th:action="home" method='post'>
             <table cellpadding='0' cellspacing='0' width='700'>
                 <tr>
                     <td height="5" colspan="10">&nbsp;</td>
@@ -54,7 +54,7 @@
                 <tr>
                     <td height="20" colspan="10" align="center" class="tdcontent">
                         <input type="radio" name="searchCondition" value="title" checked>제목&nbsp;&nbsp;
-                        <input type="radio" name="searchCondition" value="content" checked>내용&nbsp;&nbsp;
+                        <input type="radio" name="searchCondition" value="content">내용&nbsp;&nbsp;
                         <input type="radio" name="searchCondition" value="writer">작성자&nbsp;&nbsp;
                         <input type="radio" name="searchCondition" value="community">커뮤니티
                     </td>
@@ -70,22 +70,15 @@
         <table width="720" height="100" border="1" cellpadding="0" cellspacing="0">
             <tr>
                 <td width="50" class="tablelabel">커뮤니티</td>
-                <td width="270" class="tablelabel">글제목</td>
+                <td width="370" class="tablelabel">글제목</td>
                 <td width="100" class="tablelabel">작성자</td>
                 <td width="100" class="tablelabel">작성일</td>
             </tr>
-            <tr>
-                <td class="tablecontent" align="center">테스트</td>
-                <td class="tablecontent">임시 제목</td>
-                <td class="tablecontent" align="center">임시 작성자</td>
-                <td class="tablecontent" align="center"></td>
-            </tr>
-            <tr th:each="board : ${boardList}">
-                <td class="tablecontent" align="center"></td>
-                <td class="tablecontent">J2EE 이야기</td>
-                <td class="tablecontent" align="center">김삼식</td>
-                <td class="tablecontent" align="center"><img height="32"
-                                                             src="images/j2eelogo.jpg" border="0"></td>
+            <tr th:each="board : ${boardList}" th:height="30">
+                <td align="center" th:text="${board.community.getName()}"></td>
+                <td th:text="${board.getTitle()}"></td>
+                <td align="center" th:value="${board.user.getId()}"></td>
+                <td align="center" th:value="${board.getRegDate()}"></td>
             </tr>
         </table>
     </form>
