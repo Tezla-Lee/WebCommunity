@@ -100,7 +100,7 @@ public class UserServiceImplTest {
     public void isInputEmpty() {
         User user = new User();
         user.setId("");
-        user.setPassword("");
+        user.setPassword("dd");
         user.setName("");
 
         Assertions.assertTrue(userServiceImpl.isInputEmpty(user));

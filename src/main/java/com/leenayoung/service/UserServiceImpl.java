@@ -14,11 +14,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public int insertUser(User user, String pwConfirm) {
 
-        if(idIdOverlap(user)){
+        if(isInputEmpty(user)){
             return -1;
         } else if(isPwConfirmDifferent(user, pwConfirm)){
             return -2;
-        } else if(isInputEmpty(user)){
+        } else if(isIdOverlap(user)){
             return -3;
         } else {
             userRepo.save(user);
@@ -29,8 +29,8 @@ public class UserServiceImpl implements UserService {
     public boolean isInputEmpty(User user) {
 
         return user.getId().length() == 0
-                && user.getPassword().length() == 0
-                 && user.getName().length() == 0 ;
+                || user.getPassword().length() == 0
+                 || user.getName().length() == 0 ;
     }
 
     public boolean isPwConfirmDifferent(User user, String pwConfirm) {
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
         return !user.getPassword().equals(pwConfirm);
     }
 
-    public boolean idIdOverlap(User user) {
+    public boolean isIdOverlap(User user) {
         return userRepo.findById(user.getId()).isPresent();
     }
 
