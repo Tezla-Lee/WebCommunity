@@ -1,5 +1,6 @@
 package com.leenayoung.controller;
 
+import com.leenayoung.model.Role;
 import com.leenayoung.model.User;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
@@ -22,7 +23,10 @@ public class LoginController {
     public String loginSuccess(@AuthenticationPrincipal(expression = "user") User user, HttpSession session) {
         System.out.println("---> 로그인 성공");
         session.setAttribute("user", user);
-        System.out.println(user);
+
+        if (user.getRole().equals(Role.ROLE_ADMIN)){
+            return "admin/admin";
+        }
         return "redirect:home";
     }
 
