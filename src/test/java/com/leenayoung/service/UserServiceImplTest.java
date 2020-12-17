@@ -1,9 +1,7 @@
 package com.leenayoung.service;
 
-import com.leenayoung.model.Role;
 import com.leenayoung.model.User;
 import com.leenayoung.repository.UserRepository;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -118,4 +116,14 @@ public class UserServiceImplTest {
         Assertions.assertTrue(userServiceImpl.isInputEmpty(user));
     }
 
+    @Test
+    public void inputUser() {
+        for (int i = 1; i <= 50; i++) {
+            User user = new User();
+            user.setId("member" + i);
+            user.setPassword("1234");
+            user.setName("이재복" + i);
+            userServiceImpl.insertUser(user, "1234");
+        }
+    }
 }

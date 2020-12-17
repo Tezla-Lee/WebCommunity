@@ -1,0 +1,109 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>신나는 웹 커뮤니티</title>
+    <Link rel="stylesheet" href="css/theme.css">
+</head>
+
+<body>
+<center>
+
+    <table width="90%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="10%">
+                <table bgcolor="#1e90ff" cellpadding="0" cellspacing="0" th:height="120">
+                    <tr>
+                        <td width="250" align="center">커뮤니티 로고 자리</td>
+                    </tr>
+                </table>
+            </td>
+            <td width="85%" height="120" colspan="10" align="right" bgcolor="#8fbc8f">
+                <br>
+                <span th:if="${session.user!=null}">
+                    <h4>
+                        <font color='red'><span th:text="${session.user.getId()}"></span></font>님 환영합니다
+                        <p></p>
+                        <span th:if="${session.user.getRole()=='ROLE_ADMIN'}">
+                        <button type="button" onclick="location.href='admin'">관리자페이지</button>
+                        </span>
+                        <button type="button" onclick="location.href='logout'">로그아웃</button>
+                    </h4>
+                </span>
+                <span th:if="${session.user==null}">
+                    <h4>
+                        <font color='red'></font>게스트님 환영합니다
+                        <p></p>
+                        <button type="button" onclick="location.href='login'">로그인</button>
+                        <button type="button" onclick="location.href='join'">회원가입</button>
+                    </h4>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td width="10%">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tr th:each="community : ${communityList}" bgcolor="#7fff00">
+                        <td width="250" class="tablelabel"><a th:href="@{/getCommunity(seq=${community.getSeq()})}"
+                                                              th:text="${community.getName()}"></a></td>
+                    </tr>
+                </table>
+            </td>
+            <td style="vertical-align: top" width="85%" colspan="10" align="center" bgcolor="aqua">
+                <br>
+                <br>
+                <form th:action="mainSearch" method="get">
+                    <table bgcolor="#ff7f50" cellpadding='0' cellspacing='0' width='700'>
+                        <tr>
+                            <td height="5" colspan="10">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="30%" height="20">&nbsp;</td>
+                            <td width="40%"><input type="text" name="searchKeyword" size="50"></td>
+                            <td width="30%">&nbsp;<input type="submit" value="검색"></td>
+                        </tr>
+                        <tr>
+                            <td height="20" colspan="10" align="center" class="tdcontent">
+                                <input type="radio" name="searchCondition" value="title" checked>제목&nbsp;&nbsp;
+                                <input type="radio" name="searchCondition" value="content">내용&nbsp;&nbsp;
+                                <input type="radio" name="searchCondition" value="writer">작성자&nbsp;&nbsp;
+                                <input type="radio" name="searchCondition" value="community">커뮤니티
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="5" colspan="10">&nbsp;</td>
+                        </tr>
+                    </table>
+                </form>
+                <!-- 블로그 검색 끝 -->
+                <br>
+                <!-- 게시글 리스트 -->
+                <table bgcolor="#a9a9a9" width="720" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td width="50" class="tablelabel">커뮤니티</td>
+                        <td width="370" class="tablelabel">글제목</td>
+                        <td width="100" class="tablelabel">작성자</td>
+                        <td width="100" class="tablelabel">작성일</td>
+                    </tr>
+
+                    <tr th:each="board : ${boardList}">
+                        <td class="tablelabel" align="center" th:text="${board.getCommunity().getName()}"></td>
+                        <td class="tablelabel"><a th:href="@{/getBoard(seq=${board.getSeq()})}"
+                                                  th:text="${board.getTitle()}"></a></td>
+                        <td class="tablelabel" align="center" th:text="${board.getUser().getId()}"></td>
+                        <td class="tablelabel" align="center" th:text="${board.getRegDate()}"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--    <table width="800" border="0" cellpadding="0" cellspacing="0">-->
+    <!--        <tr th:each="community : ${communityList}" bgcolor="#7fff00">-->
+    <!--            <td width="270" class="tablelabel"><a th:href="@{/getCommunity(seq=${community.getSeq()})}"-->
+    <!--                                                  th:text="${community.getName()}"></a></td>-->
+    <!--        </tr>-->
+    <!--    </table>-->
+
+
+</center>
+</body>
+</html>

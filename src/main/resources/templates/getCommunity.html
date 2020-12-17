@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <center>
-    <body>
+    <body bgcolor="#211c17">
     <table width="1100" border="0" cellpadding="0" cellspacing="0">
         <tr>
             <!--로고-->
@@ -18,12 +18,12 @@
             </td>
 
             <!--현재 커뮤니티 위치-->
-            <td width="800" align="center" style="vertical-align: bottom" bgcolor="#bdb76b">
-                <h1 th:text="${community.getName()}"></h1>
+            <td width="800" align="center" style="vertical-align: middle" bgcolor="#106ac7">
+                <h1 class="maintitle" th:text="${community.getName()}"></h1>
             </td>
 
             <!--로그인 세션-->
-            <td width="200" height="120" colspan="10" align="center" bgcolor="#e9967a">
+            <td width="200" height="120" colspan="10" align="center" bgcolor="#483d8b">
                 <br>
                 <span th:if="${session.user!=null}">
                     <h4>
@@ -46,36 +46,50 @@
 
         <tr>
             <!--1. 커뮤니티 리스트-->
-            <td width="100">
-                <table border="0" cellpadding="0" cellspacing="0">
-                    <tr th:each="community : ${communityList}" bgcolor="#7fff00">
-                        <td align="center" width="250" class="tablelabel"><a
-                                th:href="@{/getCommunity(seq=${community.getSeq()})}"
+            <td width="100" style="vertical-align: top">
+                <table class="community" border="0" cellpadding="0" cellspacing="0">
+                    <tr th:each="community : ${communityList}" bgcolor="#6495ed">
+                        <td align="center" width="250" height="30"><a
+                                th:href="@{/getCommunity(seq=${community.getSeq()}, page=0)}"
                                 th:text="${community.getName()}"></a></td>
                     </tr>
                 </table>
             </td>
 
             <!-- 2. 게시글 리스트 -->
-            <td width="800" style="vertical-align: top" colspan="10" align="center" bgcolor="aqua">
-                <br><br>
-                <table bgcolor="#a9a9a9" width="720" border="0" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td width="550" class="tablelabel">제목</td>
-                        <td width="100" class="tablelabel">작성자</td>
-                        <td width="100" class="tablelabel">작성일</td>
-                        <td width="50" class="tablelabel">조회</td>
+            <td width="800" style="vertical-align: top" colspan="10" align="center" bgcolor="#f5f5f5">
+                <hr width="720">
+                <table class="boardtable" bgcolor="#f5f5f5" width="720" border="0" cellpadding="0" cellspacing="0">
+                    <tr style="vertical-align: bottom" height="40">
+                        <td width="420" class="tablelabel">제목
+                            <hr/>
+                        </td>
+                        <td width="100" class="tablelabel">작성자
+                            <hr/>
+                        </td>
+                        <td width="100" class="tablelabel">작성일
+                            <hr/>
+                        </td>
+                        <td width="50" class="tablelabel">조회
+                            <hr/>
+                        </td>
                     </tr>
-                    <tr th:each="board : ${boardList}" th:height="30">
-                        <td class="tablelabel"><a
+                    <tr th:each="board : ${boardList}" th:height="40">
+                        <td class="tabletitleincommunity"><a
                                 th:href="@{/getBoard(communitySeq=${community.getSeq()}, seq=${board.getSeq()})}"
                                 th:text="${board.getTitle()}"></a>
                         </td>
-                        <td class="tablelabel" align="center" th:text="${board.getUser().getId()}"></td>
-                        <td class="tablelabel" align="center"
-                            th:text="${#dates.format(board.getRegDate(), 'yyyy.MM.dd')}"></td>
+                        <td class="tablefont" align="center" th:text="${board.getUser().getId()}"></td>
+                        <span th:if="${session.time != #dates.format(board.getRegDate(), 'yyyyMMdd')}">
+                            <td class="tablefont" align="center"
+                                th:text="${#dates.format(board.getRegDate(), 'yyyy.MM.dd')}"></td>
+                        </span>
+                        <span th:if="${session.time == #dates.format(board.getRegDate(), 'yyyyMMdd')}">
+                            <td class="tablefont" align="center"
+                                th:text="${#dates.format(board.getRegDate(), 'HH:mm')}"></td>
+                        </span>
 
-                        <td class="tablelabel" align="center" th:text="${board.getCnt()}"></td>
+                        <td class="tablefont" align="center" th:text="${board.getCnt()}"></td>
                     </tr>
                 </table>
                 <br>
@@ -87,7 +101,7 @@
 
 <!--                    <button type="button" th:onclick="location.href==/insertBoard">글쓰기</button>-->
                             <!--                    <button type="button" onclick="location.href='login'">로그인</button>-->
-                    <a th:href="@{/insertBoard(seq=${community.getSeq()})}">글쓰기</a>
+                    <h2 class="listlink"><a th:href="@{/insertBoard(seq=${community.getSeq()})}">글쓰기</a></h2>
 
                         </td>
                         <td width="50"></td>
@@ -95,11 +109,21 @@
                 </table>
                 </span>
 
+                <!-- 페이지 -->
+                <table>
+                    <tr>
+                        <td th:each="num, numStat: ${#numbers.sequence(0,totalPage)}"><a
+                                th:href="@{/getCommunity(seq=${community.getSeq()}, page=${numStat.index})}"
+                                th:text="${numStat.count}"></a>&nbsp;&nbsp;
+                        </td>
+                    </tr>
+                </table>
 
                 <br><br>
 
+                <!-- 검색 -->
                 <form th:action="communitySearch" method="get">
-                    <table bgcolor="#ff7f50" cellpadding='0' cellspacing='0' width='700'>
+                    <table bgcolor="#a9a9a9" cellpadding='0' cellspacing='0' width='700'>
                         <tr>
                             <td height="5" colspan="10">&nbsp;</td>
                         </tr>
@@ -111,9 +135,8 @@
                         <tr>
                             <td height="20" colspan="10" align="center" class="tdcontent">
                                 <input type="hidden" name="communitySeq" th:value="${community.getSeq()}">
-<!--                                <span th:if="${searchCondition == null || searchCondition == 'title'}">-->
-                                    <input type="radio" name="searchCondition" value="title" checked>제목&nbsp;&nbsp;
-<!--                                </span>-->
+                                <input type="hidden" name="page" th:value="0">
+                                <input type="radio" name="searchCondition" value="title" checked>제목&nbsp;&nbsp;
                                 <input type="radio" name="searchCondition" value="content">내용&nbsp;&nbsp;
                                 <input type="radio" name="searchCondition" value="writer">작성자&nbsp;&nbsp;
                             </td>
@@ -123,10 +146,9 @@
                         </tr>
                     </table>
                 </form>
-                <!-- 블로그 검색 끝 -->
                 <br>
             </td>
-            <td width="200" bgcolor="#dc143c"></td>
+            <td width="200" bgcolor="#f5f5f5"></td>
         </tr>
     </table>
 

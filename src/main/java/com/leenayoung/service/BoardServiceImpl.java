@@ -4,6 +4,8 @@ import com.leenayoung.model.Board;
 import com.leenayoung.model.Community;
 import com.leenayoung.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -63,8 +65,18 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    public Page<Board> getBoardListByTitle(String title, Pageable pageable) {
+        return boardRepository.findBoardByTitleContaining(title, pageable);
+    }
+
+    @Override
     public List<Board> getBoardListByUser_ID(String userID) {
         return boardRepository.findBoardByUser_IdContaining(userID);
+    }
+
+    @Override
+    public Page<Board> getBoardListByUser_ID(String writer, Pageable pageable) {
+        return boardRepository.findBoardByUser_Id(writer, pageable);
     }
 
     @Override
@@ -78,8 +90,18 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    public Page<Board> getBoardListByContent(String content, Pageable pageable) {
+        return boardRepository.findBoardByContentContaining(content, pageable);
+    }
+
+    @Override
     public List<Board> getBoardListByCommunity_Name(String name) {
         return boardRepository.findBoardByCommunity_Name(name);
+    }
+
+    @Override
+    public Page<Board> getBoardListByCommunity_Name(String name, Pageable pageable) {
+        return boardRepository.findBoardByCommunity_Name(name, pageable);
     }
 
     @Override
@@ -88,12 +110,37 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    public Page<Board> getBoardListByTitleAndCommunitySeq(String title, long communitySeq, Pageable pageable) {
+        return null;
+    }
+
+    @Override
     public List<Board> getBoardListByContentAndCommunitySeq(String content, long communitySeq) {
         return boardRepository.findBoardByContentAndCommunitySeq(content, communitySeq);
     }
 
     @Override
+    public Page<Board> getBoardListByContentAndCommunitySeq(String content, long communitySeq, Pageable pageable) {
+        return null;
+    }
+
+    @Override
     public List<Board> getBoardListByUserIDAndCommunitySeq(String userId, long communitySeq) {
         return boardRepository.findBoardByUser_IDAndCommunitySeq(userId, communitySeq);
+    }
+
+    @Override
+    public Page<Board> getBoardListByUserIDAndCommunitySeq(String userId, long communitySeq, Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Page<Board> getBoardByCommunity_Seq(long seq, Pageable pageable) {
+        return boardRepository.findBoardByCommunity_Seq(seq, pageable);
+    }
+
+    @Override
+    public Page<Board> getBoardListPage(Pageable pageable) {
+        return boardRepository.findAll(pageable);
     }
 }
