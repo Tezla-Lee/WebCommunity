@@ -23,6 +23,9 @@
                     <h4>
                         <font color='red'><span th:text="${session.user.getId()}"></span></font>님 환영합니다
                         <p></p>
+                        <span th:if="${session.user.getRole()=='ROLE_ADMIN'}">
+                        <button type="button" onclick="location.href='admin'">관리자페이지</button>
+                        </span>
                         <button type="button" onclick="location.href='logout'">로그아웃</button>
                     </h4>
                 </span>
