@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,31 +18,39 @@ public class AdminController {
 
     @GetMapping("admin")
     public String viewAdmin() {
-        System.out.println("어드민페이지요청");
         return "admin/admin";
     }
 
     @GetMapping("admin/admin_community")
     public String viewAdminCategory(Model model){
         model.addAttribute("communityList", communityService.getCommunityList());
-        System.out.println("=============================>" +model.getAttribute("communityList"));
-        System.out.println("카테고리관리");
         return "admin/admin_community";
     }
 
     @GetMapping("/admin/delete_community")
     public String deleteCategory(HttpServletRequest request) {
         String seq = request.getParameter("seq");
-        System.out.println("==========> seq"+seq);
-
         Community community = new Community();
         community.setSeq(Long.parseLong(seq));
-        System.out.println("===========> pasredSeq" + community.getSeq());
-
         communityService.deleteCommunity(community);
+        return "redirect:/admin/admin_community";
+    }
+
+    @GetMapping("/admin/update_community")
+    public String viewUpdateCommunity(Community community, Model model) {
+        Community findCommunity = new Community();
+        findCommunity.setSeq(community.getSeq());
+
+        model.addAttribute("community", communityService.getCommunity(findCommunity));
+        return "/admin/update_community";
+    }
+
+    @PostMapping("/admin/update_community")
+    public String updateCommunity(Community community) {
+        System.out.println("============>" + community);
+        communityService.updateCommunity(community);
 
         return "redirect:/admin/admin_community";
-
     }
 
 }
