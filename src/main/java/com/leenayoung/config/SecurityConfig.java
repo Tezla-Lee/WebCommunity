@@ -24,7 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity security) throws Exception {
         // 사이트간 요청 위조를 비활성화 시킨다
         security.csrf().disable();
-        security.authorizeRequests().antMatchers("/").permitAll();
+
+        security.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
 
         security.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccess",true);
 
