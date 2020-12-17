@@ -27,4 +27,10 @@ public interface BoardService {
     List<Board> getBoardListByContent(String content);
 
     List<Board> getBoardListByCommunity_Name(String name);
+
+    List<Board> getBoardListByTitleAndCommunitySeq(String title, long communitySeq);
+
+    List<Board> getBoardListByContentAndCommunitySeq(String content, long communitySeq);
+
+    List<Board> getBoardListByUserIDAndCommunitySeq(String userId, long communitySeq);
 }

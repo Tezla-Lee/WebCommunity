@@ -18,7 +18,7 @@ public class CommunityRepositoryTest {
 
     @Test
     public void prepareTest() {
-        for (int i = 11; i <= 50; i++) {
+        for (int i = 1; i <= 50; i++) {
             Community community = new Community();
             community.setName("Community" + i);
             communityRepo.save(community);

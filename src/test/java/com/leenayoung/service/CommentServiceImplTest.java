@@ -31,7 +31,7 @@ public class CommentServiceImplTest {
         user = userService.getUser(user);
 
         Board board = new Board();
-        board.setSeq(12L);
+        board.setSeq(53L);
         board = boardService.getBoard(board);
 
         for (int i = 0; i < 10; i++) {

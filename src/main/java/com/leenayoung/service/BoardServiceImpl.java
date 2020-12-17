@@ -81,4 +81,19 @@ public class BoardServiceImpl implements BoardService {
     public List<Board> getBoardListByCommunity_Name(String name) {
         return boardRepository.findBoardByCommunity_Name(name);
     }
+
+    @Override
+    public List<Board> getBoardListByTitleAndCommunitySeq(String title, long communitySeq) {
+        return boardRepository.findBoardByTitleAndCommunitySeq(title, communitySeq);
+    }
+
+    @Override
+    public List<Board> getBoardListByContentAndCommunitySeq(String content, long communitySeq) {
+        return boardRepository.findBoardByContentAndCommunitySeq(content, communitySeq);
+    }
+
+    @Override
+    public List<Board> getBoardListByUserIDAndCommunitySeq(String userId, long communitySeq) {
+        return boardRepository.findBoardByUser_IDAndCommunitySeq(userId, communitySeq);
+    }
 }
