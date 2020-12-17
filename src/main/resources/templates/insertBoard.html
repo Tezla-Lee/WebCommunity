@@ -6,6 +6,7 @@
 <body th:align="center">
 <h1>게시글 등록</h1>
 <form th:action="insertBoard" method="post">
+    <input type="hidden" name="communitySeq" th:value="${community.getSeq()}">
     <table th:align="center" border="1" th:cellpadding="0"
            th:cellspacing="0">
         <tr>

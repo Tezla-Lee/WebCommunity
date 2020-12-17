@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,18 +24,15 @@ public class CommentController {
     BoardService boardService;
 
     @PostMapping("/insertComment")
-    public String insertComment(Board board, Comment comment, HttpSession session, Model model) {
+    public String insertComment(Board board, Comment comment, HttpSession session, Model model, @RequestParam("communitySeq") long communitySeq) {
         System.out.println("===> insertComment ..................");
-        User user = (User) session.getAttribute("user");
-        comment.setUser(user);
-        System.out.println(user.toString());
-        Board tempBoard = boardService.getBoard(board);
-        System.out.println(tempBoard.toString());
-        comment.setBoard(tempBoard);
-        System.out.println(comment.toString());
+//        System.out.println("communitySeq : " + communitySeq);
+//        System.out.println("board : " + board.toString());
+//        System.out.println("comment : " + comment.toString());
+        comment.setUser((User) session.getAttribute("user"));
+        comment.setBoard(boardService.getBoard(board));
         commentService.insertComment(comment);
-        model.addAttribute("board", tempBoard);
-        return "redirect:getBoard?seq=" + board.getSeq();
+        return "redirect:getBoard?communitySeq=" + communitySeq + "&seq=" + board.getSeq();
     }
 
     @GetMapping("/deleteComment")

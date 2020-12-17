@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -31,16 +31,26 @@ public class BoardController {
     }
 
     @PostMapping("/insertBoard")
-    public String insertBoard(Board board, HttpSession session) {
+    public String insertBoard(Board board, HttpSession session, @RequestParam long communitySeq) {
+        System.out.println("===> insertBoard.................................................");
         board.setUser((User) session.getAttribute("user"));
-        board.setCommunity((Community) session.getAttribute("community"));
+        Community community = new Community();
+        community.setSeq(communitySeq);
+        board.setCommunity(communityService.getCommunity(community));
+        System.out.println(board.toString());
         boardService.insertBoard(board);
-        return "getBoard";
+        return "redirect:getBoard?communitySeq=" + communitySeq + "&seq=" + board.getSeq();
     }
 
     @GetMapping("/getBoard")
-    public String getBoard(Board board, Model model) {
+    public String getBoard(Board board, Model model, @RequestParam long communitySeq) {
+        System.out.println("===> getBoard..............................");
         model.addAttribute("board", boardService.updateBoardCount(boardService.getBoard(board)));
+
+        Community community = new Community();
+        community.setSeq(communitySeq);
+        model.addAttribute("community", communityService.getCommunity(community));
+        model.addAttribute("communityList", communityService.getCommunityList());
         return "getBoard";
     }
 
@@ -62,19 +72,14 @@ public class BoardController {
     }
 
     @GetMapping("/deleteBoard")
-    public String deleteBoard(Board board) {
+    public String deleteBoard(Board board, @RequestParam long communitySeq, Model model) {
         boardService.deleteBoard(board);
-        return "redirect:getBoardList";
+        return "redirect:getCommunity?seq=" + communitySeq;
     }
 
     @GetMapping("/getBoardList")
     public String getBoardList(Board board, Model model) {
         model.addAttribute("boardList", boardService.getBoardList());
         return "getBoardList";
-    }
-
-    @RequestMapping("/main")
-    public String test() {
-        return "getCommunity";
     }
 }

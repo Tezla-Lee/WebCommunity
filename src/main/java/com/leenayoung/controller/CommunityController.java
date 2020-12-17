@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -29,12 +30,46 @@ public class CommunityController {
 
         List<Board> boardList = boardService.getBoardListByCommunity_Seq(getCom);
         model.addAttribute("boardList", boardList);
-        session.setAttribute("community", getCom);
+//        session.setAttribute("community", getCom);
+
+        model.addAttribute("communityList", communityService.getCommunityList());
 
         System.out.println(getCom.toString());
         System.out.println(boardList);
         return "getCommunity";
     }
+
+    @GetMapping("/communitySearch")
+    public String searchCommunity(Model model, @RequestParam("searchCondition") String searchCondition, @RequestParam("searchKeyword") String searchKeyword,
+                                  @RequestParam("communitySeq") long communitySeq) {
+        List<Board> boardList;
+        switch (searchCondition) {
+            case "title":
+                System.out.println("---> getBoardListByTitleAndCommunitySeq");
+                boardList = boardService.getBoardListByTitleAndCommunitySeq(searchKeyword, communitySeq);
+                break;
+            case "content":
+                boardList = boardService.getBoardListByContentAndCommunitySeq(searchKeyword, communitySeq);
+                break;
+            case "writer":
+                boardList = boardService.getBoardListByUserIDAndCommunitySeq(searchKeyword, communitySeq);
+                break;
+            default:
+                boardList = null;
+        }
+        for (Board board : boardList) {
+            System.out.println(board.toString());
+        }
+        Community tempComm = new Community();
+        tempComm.setSeq(communitySeq);
+        model.addAttribute("community", communityService.getCommunity(tempComm));
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("communityList", communityService.getCommunityList());
+        model.addAttribute("searchCondition", searchCondition);
+        model.addAttribute("searchKeyword", searchKeyword);
+        return "getCommunity";
+    }
+
 
     @PostMapping("/deleteCommunity")
     public String deleteCommunity(Community community) {
