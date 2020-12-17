@@ -53,6 +53,21 @@ public class UserServiceImplTest {
     }
 
     @Test
+    public void passwordEncoderTest() {
+        User user = new User();
+        user.setId("passwordEncoder");
+        user.setPassword("password");
+        user.setName("인코더");
+        String pwConfirm = "password";
+        if(userRepo.findById(user.getId()).isPresent()){
+            userRepo.deleteById(user.getId());
+        }
+        userServiceImpl.insertUser(user, pwConfirm);
+        String result = userRepo.findById("passwordEncoder").get().getPassword();
+        assertEquals(user.getPassword(),result);
+    }
+
+    @Test
     public void insertUser() {
         User user1 = new User();
         user1.setId("user1");

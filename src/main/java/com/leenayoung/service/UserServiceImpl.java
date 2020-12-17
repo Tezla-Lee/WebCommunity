@@ -3,13 +3,17 @@ package com.leenayoung.service;
 import com.leenayoung.model.User;
 import com.leenayoung.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserRepository userRepo;
+    private UserRepository userRepo;
+
+    @Autowired
+    private PasswordEncoder encoder;
 
     @Override
     public int insertUser(User user, String pwConfirm) {
@@ -21,6 +25,7 @@ public class UserServiceImpl implements UserService {
         } else if(isIdOverlap(user)){
             return -3;
         } else {
+            user.setPassword(encoder.encode(user.getPassword()));
             userRepo.save(user);
             return 1;
         }
