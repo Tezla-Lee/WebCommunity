@@ -29,7 +29,6 @@ public class CommunityController {
 
         List<Board> boardList = boardService.getBoardListByCommunity_Seq(getCom);
         model.addAttribute("boardList", boardList);
-
         session.setAttribute("community", getCom);
 
         System.out.println(getCom.toString());

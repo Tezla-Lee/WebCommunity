@@ -69,7 +69,7 @@ public class BoardController {
 
     @GetMapping("/getBoardList")
     public String getBoardList(Board board, Model model) {
-        model.addAttribute("boardList", boardService.getBoardList(board));
+        model.addAttribute("boardList", boardService.getBoardList());
         return "getBoardList";
     }
 
