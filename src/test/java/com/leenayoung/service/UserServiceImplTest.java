@@ -3,6 +3,7 @@ package com.leenayoung.service;
 import com.leenayoung.model.Role;
 import com.leenayoung.model.User;
 import com.leenayoung.repository.UserRepository;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -24,12 +25,11 @@ public class UserServiceImplTest {
     UserRepository userRepo;
 
 
-    @Test
+//    @Before
     public void beforeTest(){
         User user1 = new User();
         user1.setId("user1");
         user1.setPassword("user1");
-        user1.setRole(Role.ROLE_MEMBER);
         user1.setName("user1");
         String pwConfirm1 = "user1";
 //        user1.setJoinDate(new Date().setTime(123123););
@@ -38,7 +38,6 @@ public class UserServiceImplTest {
         User user2 = new User();
         user2.setId("user2");
         user2.setPassword("user2");
-        user2.setRole(Role.ROLE_MEMBER);
         user2.setName("user2");
         String pwConfirm2 = "user2";
         userServiceImpl.insertUser(user2, pwConfirm2);
@@ -46,7 +45,6 @@ public class UserServiceImplTest {
         User user3 = new User();
         user3.setId("user3");
         user3.setPassword("user3");
-        user3.setRole(Role.ROLE_MEMBER);
         user3.setName("user3");
         String pwConfirm3 = "user3";
         userServiceImpl.insertUser(user3, pwConfirm3);
@@ -70,15 +68,14 @@ public class UserServiceImplTest {
     @Test
     public void insertUser() {
         User user1 = new User();
-        user1.setId("user1");
-        user1.setPassword("user1");
-        user1.setRole(Role.ROLE_MEMBER);
-        user1.setName("user");
-        String pwConfirm = "user1";
+        user1.setId("user112233");
+        user1.setPassword("user112233");
+        user1.setName("user112233");
+        String pwConfirm = "user112233";
 
         int result = userServiceImpl.insertUser(user1, pwConfirm);
 
-        assertEquals(-1, result );
+        assertEquals(1, result );
     }
 
     @Test

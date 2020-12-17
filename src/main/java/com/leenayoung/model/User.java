@@ -1,5 +1,6 @@
 package com.leenayoung.model;
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -23,7 +24,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false)
     private String name;
 
     @Temporal(value = TemporalType.TIMESTAMP)
@@ -33,7 +34,7 @@ public class User {
     private Date joinDate;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role=Role.ROLE_MEMBER;
 
 
 }
