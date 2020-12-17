@@ -43,7 +43,7 @@ public class BoardController {
     }
 
     @GetMapping("/getBoard")
-    public String getBoard(Board board, Model model, @RequestParam long communitySeq) {
+    public String getBoard(Board board, Model model, @RequestParam long communitySeq, @RequestParam int page) {
         System.out.println("===> getBoard..............................");
         model.addAttribute("board", boardService.updateBoardCount(boardService.getBoard(board)));
 
@@ -51,6 +51,8 @@ public class BoardController {
         community.setSeq(communitySeq);
         model.addAttribute("community", communityService.getCommunity(community));
         model.addAttribute("communityList", communityService.getCommunityList());
+        model.addAttribute("page", page);
+
         return "getBoard";
     }
 

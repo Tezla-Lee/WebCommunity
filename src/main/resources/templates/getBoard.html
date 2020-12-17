@@ -19,8 +19,10 @@
             </td>
 
             <!--현재 커뮤니티 위치-->
-            <td width="800" align="center" style="vertical-align: bottom" bgcolor="#106ac7">
-                <h1 class="maintitle" th:text="${community.getName()}"></h1>
+            <td width="800" align="center" style="vertical-align: middle" bgcolor="#106ac7">
+                <a th:href="@{/getCommunity(seq=${community.getSeq()}, page=0)}"><h1 class="maintitle"
+                                                                                     th:text="${community.getName()}"></h1>
+                </a>
             </td>
 
             <!--로그인 세션-->
@@ -65,7 +67,7 @@
                     <tr>
                         <td width="700"></td>
                         <td class="listlinkblock" width="50">
-                            <h2 class="listlink"><a th:href="@{/getCommunity(seq=${board.community.getSeq()})}">목록</a>
+                            <h2 class="listlink"><a th:href="@{/getCommunity(seq=${board.community.getSeq()}, page=${page})}">목록</a>
                             </h2>
                         </td>
                         <td width="50"></td>
@@ -130,7 +132,8 @@
                     <table width="500" height="20" border="0" cellpadding="0" cellspacing="0" align="center">
                         <tr>
                             <td align="center">
-                                <h2>댓글 기능을 사용하시려면 <a style="color: red" href="login">로그인</a>하세요. </h2>
+                                <h2 class="commentLogin">댓글 기능을 사용하시려면 <a style="color: red"
+                                                                          href="login">로그인</a>하세요. </h2>
                             </td>
                         </tr>
                     </table>

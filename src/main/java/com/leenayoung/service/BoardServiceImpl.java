@@ -111,7 +111,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Page<Board> getBoardListByTitleAndCommunitySeq(String title, long communitySeq, Pageable pageable) {
-        return null;
+        return boardRepository.findBoardByTitleAndCommunitySeq(title, communitySeq, pageable);
     }
 
     @Override
@@ -121,7 +121,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Page<Board> getBoardListByContentAndCommunitySeq(String content, long communitySeq, Pageable pageable) {
-        return null;
+        return boardRepository.findBoardByContentAndCommunitySeq(content, communitySeq, pageable);
     }
 
     @Override
@@ -131,7 +131,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Page<Board> getBoardListByUserIDAndCommunitySeq(String userId, long communitySeq, Pageable pageable) {
-        return null;
+        return boardRepository.findBoardByUser_IDAndCommunitySeq(userId, communitySeq, pageable);
     }
 
     @Override

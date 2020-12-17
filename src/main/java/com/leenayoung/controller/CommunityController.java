@@ -33,6 +33,7 @@ public class CommunityController {
 
         model.addAttribute("communityList", communityService.getCommunityList());
 
+        model.addAttribute("page", page);
 
         // paging
         Pageable pageable = PageRequest.of(page, 10);
@@ -74,6 +75,7 @@ public class CommunityController {
         }
         System.out.println("통과!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         List<Board> boardList = pageInfo.getContent();
+        System.out.println(boardList);
         Community tempComm = new Community();
         tempComm.setSeq(communitySeq);
         model.addAttribute("community", communityService.getCommunity(tempComm));

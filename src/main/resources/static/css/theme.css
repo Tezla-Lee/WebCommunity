@@ -22,7 +22,7 @@ A:hover {
     font-family: "굴림체";
     color: black;
     font-weight: normal;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
 
 A.title:link {
@@ -195,7 +195,7 @@ A.title:hover {
     border-bottom: 1px solid darkgray;
     text-indent: 3em;
 
-    text-overflow : ellipsis;
+    text-overflow: ellipsis;
     width: 350px;
     overflow: hidden;
     white-space: nowrap;
@@ -209,7 +209,7 @@ A.title:hover {
     border-bottom: 1px solid darkgray;
     text-indent: 3em;
 
-    text-overflow : ellipsis;
+    text-overflow: ellipsis;
     /*width: 450px;*/
     overflow: hidden;
     white-space: nowrap;
@@ -232,13 +232,19 @@ A.title:hover {
     /*vertical-align: top;*/
     border-bottom: 1px solid darkgray;
 }
+
 .boardtable {
     table-layout: fixed;
 }
+
 .community {
     font-size: 13pt;
     vertical-align: top;
     font-weight: bold;
+}
+
+.community a:hover {
+    text-decoration: underline;
 }
 
 .maintitle {
@@ -251,4 +257,12 @@ A.title:hover {
     font-size: 9pt;
     font-weight: bold;
     height: 24px;
+}
+
+.commentLogin {
+    font-weight: bold;
+}
+
+.commentLogin a:hover {
+    text-decoration: underline;
 }

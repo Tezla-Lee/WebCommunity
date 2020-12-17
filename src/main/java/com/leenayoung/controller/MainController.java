@@ -51,7 +51,8 @@ public class MainController {
         model.addAttribute("boardList", boardList);
         int totalPage = pageInfo.getTotalPages();
         model.addAttribute("totalPage", pageInfo.getTotalPages() - 1);
-
+        model.addAttribute("searchCondition", "title");
+        model.addAttribute("searchKeyword", "");
         System.out.println(totalPage);
 
         return "main";

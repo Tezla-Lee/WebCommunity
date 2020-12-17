@@ -19,8 +19,8 @@
             </td>
 
             <!--메인 헤드-->
-            <td width="800" bgcolor="#106ac7">
-                <h1 class="maintitle">메인 페이지</h1>
+            <td width="800" align="center" style="vertical-align: middle" bgcolor="#106ac7">
+                <a href="home"><h1 class="maintitle" th:text="'메인 페이지'"></h1></a>
             </td>
 
             <!--로그인 세션-->
@@ -68,7 +68,8 @@
                         </tr>
                         <tr>
                             <td width="30%" height="20">&nbsp;</td>
-                            <td width="40%"><input type="text" name="searchKeyword" size="50" th:value="${searchKeyword}"></td>
+                            <td width="40%"><input type="text" name="searchKeyword" size="50"
+                                                   th:value="${searchKeyword}"></td>
                             <td width="30%">&nbsp;<input type="submit" value="검색"></td>
                         </tr>
                         <tr>
@@ -77,7 +78,8 @@
                                 <input type="radio" name="searchCondition" value="title" checked>제목&nbsp;&nbsp;
                                 <input type="radio" name="searchCondition" value="content" th:checked="${contentCheck}">내용&nbsp;&nbsp;
                                 <input type="radio" name="searchCondition" value="writer" th:checked="${writerCheck}">작성자&nbsp;&nbsp;
-                                <input type="radio" name="searchCondition" value="community" th:checked="${communityCheck}">커뮤니티
+                                <input type="radio" name="searchCondition" value="community"
+                                       th:checked="${communityCheck}">커뮤니티
                             </td>
                         </tr>
                         <tr>
@@ -85,11 +87,17 @@
                         </tr>
                     </table>
                 </form>
+                <br>
+                <span th:if="${searchKeyword!=''}">
+                    <h3>검색 결과</h3>
+                </span>
                 <span th:if="${boardListSize==0}">
                     <h2 style="color: red">검색 결과가 존재하지 않습니다.</h2>
                 </span>
-                <br>
-                <h3>전체 게시글</h3>
+                <span th:if="${searchKeyword==''}">
+                    <h3>최신글</h3>
+                </span>
+<!--                <h3>전체 게시글</h3>-->
                 <!-- 전체 게시글 리스트 -->
                 <hr width="720">
                 <table class="boardtable" bbgcolor="#a9a9a9" width="720" cellpadding="0" cellspacing="0">
