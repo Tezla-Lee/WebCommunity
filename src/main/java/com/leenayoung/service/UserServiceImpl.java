@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -48,30 +50,37 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    @Override
-    public int updateUserPassword(User user) {
-        if(userRepo.findById(user.getId()).isPresent()){
-            User findUser = userRepo.findById(user.getId()).get();
-            findUser.setPassword(user.getPassword());
-            userRepo.save(findUser);
-            return 1;
-        } else {
-            return -1;
-        }
-    }
+//    @Override
+//    public int updateUserPassword(User user) {
+//        if(userRepo.findById(user.getId()).isPresent()){
+//            User findUser = userRepo.findById(user.getId()).get();
+//
+//            if (encoder.matches(user.getPassword(), findUser.getPassword())){
+//                findUser.setPassword(encoder.encode(user.getPassword()));
+//                userRepo.save(findUser);
+//                return 1;
+//            }
+//                return -1;
+//
+//        } else {
+//                return -1;
+//        }
+//    }
 
     @Override
     public int deleteUser(User user) {
-        if(userRepo.findByIdAndPasswordAndName(user.getId(),user.getPassword(),user.getName())
-            != null ){
-            User findUser = userRepo.findByIdAndPasswordAndName(user.getId(),user.getPassword(),user.getName());
-            userRepo.delete(findUser);
-            return 1;
+
+        User findUser = userRepo.findByIdAndName(user.getId(), user.getName());
+
+        if(findUser != null ){
+            if (encoder.matches(user.getPassword(), findUser.getPassword())) {
+                userRepo.delete(findUser);
+                return 1;
+            }
+             return -1;
         } else {
             return -1;
         }
-
-
     }
 
     @Override
