@@ -28,9 +28,9 @@
                 <br>
                 <span th:if="${session.user!=null}">
                     <h4>
-                        <font color='red'><span th:text="${session.user.getId()}"></span></font>님 환영합니다
+                        <font color='red'><span th:text="${session.user.getName()}"></span></font>님 환영합니다
                         <p></p>
-                            <span th:if="${session.user.getRole().name() =='ROLE_ADMIN'}">
+                        <span th:if="${session.user.getRole().name() =='ROLE_ADMIN'}">
                             <button type="button" onclick="location.href='/admin/admin'">관리자</button>
                         </span>
                         <button type="button" onclick="location.href='logout'">로그아웃</button>
