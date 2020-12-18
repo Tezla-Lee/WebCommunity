@@ -24,9 +24,9 @@ public class LoginController {
         System.out.println("---> 로그인 성공");
         session.setAttribute("user", user);
 
-        if (user.getRole().equals(Role.ROLE_ADMIN)){
-            return "admin/admin";
-        }
+//        if (user.getRole().equals(Role.ROLE_ADMIN)){
+//            return "admin/admin";
+//        }
         return "redirect:home";
     }
 
