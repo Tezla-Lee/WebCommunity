@@ -46,13 +46,14 @@ public class MainController {
 
         // paging
         Pageable pageable = PageRequest.of(page, 15);
-        Page<Board> pageInfo = boardService.getBoardListPage(pageable);
+        Page<Board> pageInfo = boardService.getBoardListByTitle("", pageable);
         List<Board> boardList = pageInfo.getContent();
         model.addAttribute("boardList", boardList);
         int totalPage = pageInfo.getTotalPages();
         model.addAttribute("totalPage", pageInfo.getTotalPages() - 1);
         model.addAttribute("searchCondition", "title");
         model.addAttribute("searchKeyword", "");
+        model.addAttribute("page", page);
         System.out.println(totalPage);
 
         return "main";

@@ -9,6 +9,8 @@
     <table th:align="center" border="1" th:cellpadding="0"
            th:cellspacing="0">
         <input name="seq" type="hidden" size="50" th:value="${board.getSeq()}">
+        <input name="page" type="hidden" th:value="${page}">
+        <input name="communitySeq" type="hidden" th:value="${communitySeq}">
         <tr>
             <td bgcolor="orange" th:text="제목" width="80"></td>
             <td><input name="title" type="text" size="50" th:value="${board.getTitle()}"></td>

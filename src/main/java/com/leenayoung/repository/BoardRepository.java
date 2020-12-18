@@ -11,24 +11,24 @@ import java.util.List;
 public interface BoardRepository extends CrudRepository<Board, Long> {
     List<Board> findBoardByTitleContaining(String keyword);
 
-    Page<Board> findBoardByTitleContaining(String keyword, Pageable pageable);
+    Page<Board> findBoardByTitleContainingOrderBySeqDesc(String keyword, Pageable pageable);
 
     List<Board> findBoardByContentContaining(String keyword);
 
-    Page<Board> findBoardByContentContaining(String keyword, Pageable pageable);
+    Page<Board> findBoardByContentContainingOrderBySeqDesc(String keyword, Pageable pageable);
 
     List<Board> findBoardByUser_IdContaining(String keyword);
 
-    Page<Board> findBoardByUser_Id(String keyword, Pageable pageable);
+    Page<Board> findBoardByUser_IdOrderBySeqDesc(String keyword, Pageable pageable);
 
 
     List<Board> findBoardByCommunity_Seq(long seq);
 
     List<Board> findBoardByCommunity_Name(String name);
 
-    Page<Board> findBoardByCommunity_Name(String name, Pageable pageable);
+    Page<Board> findBoardByCommunity_NameOrderBySeqDesc(String name, Pageable pageable);
 
-    Page<Board> findBoardByCommunity_Seq(long seq, Pageable pageable);
+    Page<Board> findBoardByCommunity_SeqOrderBySeqDesc(long seq, Pageable pageable);
 
     Page<Board> findAll(Pageable pageable);
 

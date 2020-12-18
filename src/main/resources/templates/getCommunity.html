@@ -105,7 +105,7 @@
 
 <!--                    <button type="button" th:onclick="location.href==/insertBoard">글쓰기</button>-->
                             <!--                    <button type="button" onclick="location.href='login'">로그인</button>-->
-                    <h2 class="listlink"><a th:href="@{/insertBoard(seq=${community.getSeq()})}">글쓰기</a></h2>
+                    <h2 class="listlink"><a th:href="@{/insertBoard(seq=${community.getSeq()}, page=${page})}">글쓰기</a></h2>
 
                         </td>
                         <td width="50"></td>

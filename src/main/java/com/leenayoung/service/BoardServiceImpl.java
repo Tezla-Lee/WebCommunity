@@ -32,12 +32,19 @@ public class BoardServiceImpl implements BoardService {
         System.out.println("===> updateBoard ....................");
         Board updateBoard = boardRepository.findById(board.getSeq()).get();
         System.out.println(updateBoard.toString());
+        System.out.println("1");
         updateBoard.setTitle(board.getTitle());
+        System.out.println("2");
         updateBoard.setContent(board.getContent());
+        System.out.println("3");
         updateBoard.setCnt(board.getCnt());
+        System.out.println("4");
         updateBoard.setRegDate(new Date());
+        System.out.println("5");
         System.out.println(updateBoard.toString());
+        System.out.println("6");
         boardRepository.save(updateBoard);
+        System.out.println("7");
         return updateBoard;
     }
 
@@ -66,7 +73,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Page<Board> getBoardListByTitle(String title, Pageable pageable) {
-        return boardRepository.findBoardByTitleContaining(title, pageable);
+        return boardRepository.findBoardByTitleContainingOrderBySeqDesc(title, pageable);
     }
 
     @Override
@@ -76,7 +83,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Page<Board> getBoardListByUser_ID(String writer, Pageable pageable) {
-        return boardRepository.findBoardByUser_Id(writer, pageable);
+        return boardRepository.findBoardByUser_IdOrderBySeqDesc(writer, pageable);
     }
 
     @Override
@@ -91,7 +98,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Page<Board> getBoardListByContent(String content, Pageable pageable) {
-        return boardRepository.findBoardByContentContaining(content, pageable);
+        return boardRepository.findBoardByContentContainingOrderBySeqDesc(content, pageable);
     }
 
     @Override
@@ -101,7 +108,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Page<Board> getBoardListByCommunity_Name(String name, Pageable pageable) {
-        return boardRepository.findBoardByCommunity_Name(name, pageable);
+        return boardRepository.findBoardByCommunity_NameOrderBySeqDesc(name, pageable);
     }
 
     @Override
@@ -136,7 +143,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Page<Board> getBoardByCommunity_Seq(long seq, Pageable pageable) {
-        return boardRepository.findBoardByCommunity_Seq(seq, pageable);
+        return boardRepository.findBoardByCommunity_SeqOrderBySeqDesc(seq, pageable);
     }
 
     @Override
