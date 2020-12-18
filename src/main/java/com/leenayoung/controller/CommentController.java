@@ -24,7 +24,8 @@ public class CommentController {
     BoardService boardService;
 
     @PostMapping("/insertComment")
-    public String insertComment(Board board, Comment comment, HttpSession session, Model model, @RequestParam("communitySeq") long communitySeq) {
+    public String insertComment(Board board, Comment comment, HttpSession session, Model model, @RequestParam("communitySeq") long communitySeq,
+                                @RequestParam int page) {
         System.out.println("===> insertComment ..................");
 //        System.out.println("communitySeq : " + communitySeq);
 //        System.out.println("board : " + board.toString());
@@ -32,7 +33,7 @@ public class CommentController {
         comment.setUser((User) session.getAttribute("user"));
         comment.setBoard(boardService.getBoard(board));
         commentService.insertComment(comment);
-        return "redirect:getBoard?communitySeq=" + communitySeq + "&seq=" + board.getSeq();
+        return "redirect:getBoard?communitySeq=" + communitySeq + "&seq=" + board.getSeq() + "&page=" + page;
     }
 
     @GetMapping("/deleteComment")

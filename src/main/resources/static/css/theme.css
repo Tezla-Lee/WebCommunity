@@ -241,6 +241,7 @@ A.title:hover {
     font-size: 13pt;
     vertical-align: top;
     font-weight: bold;
+    height: 1000px;
 }
 
 .community a:hover {

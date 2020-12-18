@@ -1,7 +1,9 @@
 package com.leenayoung.service;
 
+import com.leenayoung.model.Role;
 import com.leenayoung.model.User;
 import com.leenayoung.repository.UserRepository;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -10,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,7 +25,7 @@ public class UserServiceImplTest {
 
 
     @Before
-    public void beforeTest(){
+    public void beforeTest() {
 
         User user = new User();
         user.setId("user");
@@ -64,12 +65,12 @@ public class UserServiceImplTest {
         user.setPassword("password");
         user.setName("인코더");
         String pwConfirm = "password";
-        if(userRepo.findById(user.getId()).isPresent()){
+        if (userRepo.findById(user.getId()).isPresent()) {
             userRepo.deleteById(user.getId());
         }
         userServiceImpl.insertUser(user, pwConfirm);
         String result = userRepo.findById("passwordEncoder").get().getPassword();
-        assertEquals(user.getPassword(),result);
+        assertEquals(user.getPassword(), result);
     }
 
     @Test
@@ -80,13 +81,13 @@ public class UserServiceImplTest {
         user1.setName("관리자");
         user1.setRole(Role.ROLE_ADMIN);
         String pwConfirm = "admin";
-        if(userRepo.findById(user1.getId()) != null) {
+        if (userRepo.findById(user1.getId()) != null) {
             userServiceImpl.deleteUser(user1);
         }
 
         int result = userServiceImpl.insertUser(user1, pwConfirm);
 
-        assertEquals(1, result );
+        assertEquals(1, result);
     }
 
 //    @Test
@@ -109,11 +110,10 @@ public class UserServiceImplTest {
         user3.setId("user");
         user3.setPassword("user");
         user3.setName("user");
-        String pwConfirm="user";
+        String pwConfirm = "user";
 
         int result = userServiceImpl.deleteUser(user3);
         assertEquals(1, result);
-
     }
 
     @Test

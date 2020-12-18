@@ -25,13 +25,14 @@ public class BoardController {
     CommunityService communityService;
 
     @GetMapping("/insertBoard")
-    public String viewInsertBoard(Community community, Model model) {
+    public String viewInsertBoard(Community community, Model model, @RequestParam int page) {
         model.addAttribute("community", communityService.getCommunity(community));
+        model.addAttribute("page", page);
         return "insertBoard";
     }
 
     @PostMapping("/insertBoard")
-    public String insertBoard(Board board, HttpSession session, @RequestParam long communitySeq) {
+    public String insertBoard(Board board, HttpSession session, @RequestParam long communitySeq, @RequestParam int page) {
         System.out.println("===> insertBoard.................................................");
         board.setUser((User) session.getAttribute("user"));
         Community community = new Community();
@@ -39,7 +40,7 @@ public class BoardController {
         board.setCommunity(communityService.getCommunity(community));
         System.out.println(board.toString());
         boardService.insertBoard(board);
-        return "redirect:getBoard?communitySeq=" + communitySeq + "&seq=" + board.getSeq();
+        return "redirect:getBoard?communitySeq=" + communitySeq + "&seq=" + board.getSeq() + "&page=" + page;
     }
 
     @GetMapping("/getBoard")
@@ -57,19 +58,28 @@ public class BoardController {
     }
 
     @GetMapping("/updateBoard")
-    public String viewUpdateBoard(Board board, Model model) {
+    public String viewUpdateBoard(Board board, Model model, @RequestParam long communitySeq, @RequestParam int page) {
         model.addAttribute("board", boardService.getBoard(board));
+        model.addAttribute("page", page);
+        model.addAttribute("communitySeq", communitySeq);
         return "updateBoard";
     }
 
     @PostMapping("/updateBoard")
-    public String updateBoard(Board board, HttpSession session) {
+    public String updateBoard(Board board, HttpSession session, @RequestParam long communitySeq, @RequestParam int page, Model model) {
         System.out.println("===> update Board...............");
         System.out.println(board.toString());
         board.setUser((User) session.getAttribute("user"));
         board.setCommunity((Community) session.getAttribute("community"));
+        Community community = new Community();
+        community.setSeq(communitySeq);
+        model.addAttribute("community", communityService.getCommunity(community));
+        model.addAttribute("communityList", communityService.getCommunityList());
+        model.addAttribute("page", page);
+        model.addAttribute("communitySeq", communitySeq);
         System.out.println(board.toString());
-        boardService.updateBoard(board);
+        model.addAttribute("board", boardService.updateBoard(board));
+        System.out.println("통과!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         return "getBoard";
     }
 
