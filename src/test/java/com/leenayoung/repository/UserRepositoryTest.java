@@ -25,11 +25,23 @@ public class UserRepositoryTest {
     @Before
     public void prepareTest() {
         User user1 = new User();
-        user1.setId("user1");
-        user1.setPassword("user1");
-        user1.setRole(Role.ROLE_MEMBER);
-        user1.setName("user");
+        user1.setId("user10");
+        user1.setPassword("user10");
+        user1.setName("user10");
         userRepo.save(user1);
+    }
+
+    @Test
+    public void findByIdAndName() {
+
+        User user = new User();
+        user.setId("user10");
+        user.setPassword("user10");
+        user.setName("user10");
+
+        User findUser = userRepo.findByIdAndName("user10", "user10");
+
+        assertEquals(user.getId(),  findUser.getId());
     }
 
     @Test
@@ -45,15 +57,5 @@ public class UserRepositoryTest {
 
     }
 
-    @Test
-    public void findByIdAndPasswordAndName() {
-        User user1 = new User();
-        user1.setId("user1");
-        user1.setPassword("user1");
-        user1.setName("user");
 
-        User findUser = userRepo.findByIdAndPasswordAndName(user1.getId(), user1.getPassword(), user1.getName());
-
-        assertEquals(findUser.getId(), user1.getId());
-    }
 }

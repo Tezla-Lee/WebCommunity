@@ -25,8 +25,17 @@ public class UserServiceImplTest {
     UserRepository userRepo;
 
 
-//    @Before
+    @Before
     public void beforeTest(){
+
+        User user = new User();
+        user.setId("user");
+        user.setPassword("user");
+        user.setName("user");
+        String pwConfirm = "user";
+//        user1.setJoinDate(new Date().setTime(123123););
+        userServiceImpl.insertUser(user, pwConfirm);
+
         User user1 = new User();
         user1.setId("user1");
         user1.setPassword("user1");
@@ -68,43 +77,44 @@ public class UserServiceImplTest {
     @Test
     public void insertUser() {
         User user1 = new User();
-        user1.setId("user112233");
-        user1.setPassword("user112233");
-        user1.setName("user112233");
-        String pwConfirm = "user112233";
+        user1.setId("admin");
+        user1.setPassword("admin");
+        user1.setName("관리자");
+        user1.setRole(Role.ROLE_ADMIN);
+        String pwConfirm = "admin";
+        if(userRepo.findById(user1.getId()) != null) {
+            userServiceImpl.deleteUser(user1);
+        }
 
         int result = userServiceImpl.insertUser(user1, pwConfirm);
 
         assertEquals(1, result );
     }
 
-    @Test
-    public void updateUser() {
-
-        User user2 = new User();
-        user2.setId("user2");
-        user2.setPassword("user2222");
-
-        userServiceImpl.updateUserPassword(user2);
-
-        User result = userRepo.findById("user2").get();
-
-        assertEquals(user2.getPassword(), result.getPassword());
-    }
+//    @Test
+//    public void updateUser() {
+//
+//        User user2 = new User();
+//        user2.setId("user2");
+//        user2.setPassword("user2222");
+//
+//        userServiceImpl.updateUserPassword(user2);
+//
+//        User result = userRepo.findById("user2").get();
+//
+//        assertEquals(user2.getPassword(), result.getPassword());
+//    }
 
     @Test
     public void deleteUser() {
         User user3 = new User();
-        user3.setId("user3");
-        user3.setPassword("user3");
-        user3.setName("user3");
+        user3.setId("user");
+        user3.setPassword("user");
+        user3.setName("user");
+        String pwConfirm="user";
 
-        userServiceImpl.deleteUser(user3);
-
-
-        boolean result = userRepo.findById(user3.getId()).isPresent();
-
-        assertFalse(result);
+        int result = userServiceImpl.deleteUser(user3);
+        assertEquals(1, result);
 
     }
 

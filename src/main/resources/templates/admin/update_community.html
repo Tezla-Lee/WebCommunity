@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title >커뮤니티 수정</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+    <body>
+    <table width="700" border="0" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+            <td height=40 colspan="10">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="font-size: 300%" width="100%" height="120" colspan="10" align="center">커뮤니티 관리</td>
+        </tr>
+        <tr>
+            <td height="5" colspan="10">&nbsp;</td>
+        </tr>
+    </table>
+    <form th:action="update_community" method="post">
+    <table th:align="center" border="1" th:cellpadding="0"
+           th:cellspacing="0" th:width="600" style="text-align: center" >
+        <tr>
+            <th bgcolor="orange" width="300">번호</th>
+            <th bgcolor="orange" width="100">이름</th>
+        </tr>
+        <tr>
+            <td th:text="${community.getSeq()}"></td>
+            <input name="seq" type="hidden" th:value="${community.getSeq()}">
+            <td><input name="name" type="text" size="50" th:value="${community.getName()}"></td>
+        </tr>
+    </table>
+    <br>
+    <div align="center">
+    <span>
+        <input type="submit" value="수정">
+    </span>
+    <span>
+        <button type="button" onclick="location.href='admin_community'">취소</button>
+    </span>
+    </div>
+    </form>
+    </body>
+</html>
