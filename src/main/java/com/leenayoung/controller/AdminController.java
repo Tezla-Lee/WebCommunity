@@ -16,7 +16,7 @@ public class AdminController {
     @Autowired
     CommunityService communityService;
 
-    @GetMapping("admin")
+    @GetMapping("admin/admin")
     public String viewAdmin() {
         return "admin/admin";
     }
