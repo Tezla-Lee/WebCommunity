@@ -20,7 +20,7 @@ public class CommunityRepositoryTest {
     public void prepareTest() {
         for (int i = 1; i <= 50; i++) {
             Community community = new Community();
-            community.setName("Community" + i);
+            community.setName("커뮤니티" + i);
             communityRepo.save(community);
         }
     }
