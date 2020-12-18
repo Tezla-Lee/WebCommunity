@@ -53,4 +53,15 @@ public class AdminController {
         return "redirect:/admin/admin_community";
     }
 
+    @GetMapping("/admin/insert_community")
+    public String viewInsertCommunity() {
+        return "/admin/insert_community";
+    }
+
+    @PostMapping("/admin/insert_community")
+    public String insertCommunity(Community community) {
+        communityService.insertCommunity(community);
+        return "redirect:/admin/admin_community";
+    }
+
 }

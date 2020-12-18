@@ -15,23 +15,28 @@
         <tr>
             <td height="5" colspan="10">&nbsp;</td>
         </tr>
+
     </table>
+    <div align="center">
+        <button type="button" onclick="location.href='insert_community'">커뮤니티 등록</button>
+    </div>
+
 
 
     <table th:align="center" border="1" th:cellpadding="0"
            th:cellspacing="0" th:width="600" style="text-align: center" >
         <tr>
-            <th bgcolor="orange" width="300">번호</th>
-            <th bgcolor="orange" width="100">이름</th>
-            <th bgcolor="orange" width="100">수정</th>
-            <th bgcolor="orange" width="100">삭제</th>
+            <th bgcolor="orange" width="80">번호</th>
+            <th bgcolor="orange" width="300">이름</th>
+            <th bgcolor="orange" width="80">수정</th>
+            <th bgcolor="orange" width="80">삭제</th>
         </tr>
         <tr th:each="community : ${communityList}" th:height="25">
             <td th:text="${community.getSeq()}"></td>
             <td th:text="${community.getName()}"></td>
-            <td><a th:href="@{/admin/update_community(seq=${community.getSeq()})}">수정</a></td>
+            <td><a style="text-decoration: none" th:href="@{/admin/update_community(seq=${community.getSeq()})}"><b>V</b></a></td>
             <td>
-                 <a style="color: #ff0000" th:href="@{/admin/delete_community(seq=${community.getSeq()})}"><b>X</b></a>
+                 <a style="color: #ff0000; text-decoration:none" th:href="@{/admin/delete_community(seq=${community.getSeq()})}"><b>X</b></a>
             </td>
 
         </tr>
