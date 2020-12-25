@@ -31,26 +31,16 @@ public class BoardServiceImpl implements BoardService {
     public Board updateBoard(Board board) {
         System.out.println("===> updateBoard ....................");
         Board updateBoard = boardRepository.findById(board.getSeq()).get();
-        System.out.println(updateBoard.toString());
-        System.out.println("1");
         updateBoard.setTitle(board.getTitle());
-        System.out.println("2");
         updateBoard.setContent(board.getContent());
-        System.out.println("3");
         updateBoard.setCnt(board.getCnt());
-        System.out.println("4");
         updateBoard.setRegDate(new Date());
-        System.out.println("5");
-        System.out.println(updateBoard.toString());
-        System.out.println("6");
         boardRepository.save(updateBoard);
-        System.out.println("7");
         return updateBoard;
     }
 
     @Override
     public Board getBoard(Board board) {
-        System.out.println("===> getBoard................");
         return boardRepository.findById(board.getSeq()).get();
     }
 

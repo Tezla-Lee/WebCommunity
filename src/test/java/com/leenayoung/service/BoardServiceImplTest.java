@@ -3,7 +3,6 @@ package com.leenayoung.service;
 import com.leenayoung.model.Board;
 import com.leenayoung.model.Community;
 import com.leenayoung.model.User;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +20,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Slf4j
+@Commit
 public class BoardServiceImplTest {
 
     @Autowired
@@ -43,7 +43,7 @@ public class BoardServiceImplTest {
             User user = new User();
             Community community = new Community();
 
-            for (int i = 0; i < 50; i++) {
+            for (int i = 0; i < 2; i++) {
                 community.setSeq((long) i + 99);
                 for (int j = 1; j <= 50; j++) {
                     user.setId("member" + j);
@@ -53,17 +53,17 @@ public class BoardServiceImplTest {
                     board.setCommunity(communityService.getCommunity(community));
                     board.setUser(userService.getUser(user));
                     boardService.insertBoard(board);
-                    em.persist(board); // JPA 컨테이너(Persistence Context)로 객체를 넣어줌. 영속 상태로 만듦. // seq(pk) 가 자동으로 세팅됨. 영속 상태의 객체에 pk(식별자 변수)가 없으면 예외 발생.
+//                    em.persist(board); // JPA 컨테이너(Persistence Context)로 객체를 넣어줌. 영속 상태로 만듦. // seq(pk) 가 자동으로 세팅됨. 영속 상태의 객체에 pk(식별자 변수)가 없으면 예외 발생.
                 }
             }
-            em.flush();
-            em.clear();
+//            em.flush();
+//            em.clear();
 //            tx1.commit(); // 이 때 실제 DB에 적용 (flush : 쌓여 있는 SQL 을 DB에 보냄)
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //            tx1.rollback(); // commit 때 예외가 발생하면 롤백
 //        } finally {
-            em.close();
+//            em.close();
 //        }
     }
 

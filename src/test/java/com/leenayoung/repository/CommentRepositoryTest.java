@@ -26,7 +26,7 @@ public class CommentRepositoryTest {
 
     @Test
     public void testGetCommentListForBoard() {
-        List<Comment> commentList = commentRepository.findCommentsBySeqOrderByRegDate(1L);
+        List<Comment> commentList = commentRepository.findCommentsBySeqOrderByRegDateDesc(1L);
         for (Comment comment : commentList) {
             System.out.println(comment.toString());
         }

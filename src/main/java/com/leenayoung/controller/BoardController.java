@@ -45,7 +45,8 @@ public class BoardController {
 
     @GetMapping("/getBoard")
     public String getBoard(Board board, Model model, @RequestParam long communitySeq, @RequestParam int page) {
-        System.out.println("===> getBoard..............................");
+        System.out.println("===> " +
+                "......................");
         model.addAttribute("board", boardService.updateBoardCount(boardService.getBoard(board)));
 
         Community community = new Community();

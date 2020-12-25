@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface
 CommentRepository extends CrudRepository<Comment, Long> {
-    List<Comment> findCommentsBySeqOrderByRegDate(long seq);
+    List<Comment> findCommentsBySeqOrderByRegDateDesc(long seq);
 }

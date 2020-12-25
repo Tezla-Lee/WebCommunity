@@ -16,13 +16,13 @@ public class Comment {
     @GeneratedValue
     private long seq;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
 
     private String content;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BOARD_SEQ", nullable = false)
     private Board board;
 
@@ -34,5 +34,6 @@ public class Comment {
     public void setBoard(Board board) {
         this.board = board;
 //        board.getCommentList().add(this);
+//        System.out.println("---> setBoard.......................................................");
     }
 }
