@@ -51,11 +51,7 @@ public class MainController {
         model.addAttribute("searchCondition", "title");
         model.addAttribute("searchKeyword", "");
         model.addAttribute("page", page);
-<<<<<<< HEAD
-=======
-        System.out.println(totalPage);
 
->>>>>>> 0984681... fix: getBoard, insertBoard, updateBoard error after paging
         return "main";
     }
 

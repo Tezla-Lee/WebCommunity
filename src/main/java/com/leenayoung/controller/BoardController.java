@@ -33,11 +33,7 @@ public class BoardController {
 
     @PostMapping("/insertBoard")
     public String insertBoard(Board board, HttpSession session, @RequestParam long communitySeq, @RequestParam int page) {
-<<<<<<< HEAD
         System.out.println("===> insertBoard...");
-=======
-        System.out.println("===> insertBoard.................................................");
->>>>>>> 0984681... fix: getBoard, insertBoard, updateBoard error after paging
         board.setUser((User) session.getAttribute("user"));
         Community community = new Community();
         community.setSeq(communitySeq);
@@ -69,11 +65,7 @@ public class BoardController {
 
     @PostMapping("/updateBoard")
     public String updateBoard(Board board, HttpSession session, @RequestParam long communitySeq, @RequestParam int page, Model model) {
-<<<<<<< HEAD
         System.out.println("===> update Board...");
-=======
-        System.out.println("===> update Board...............");
->>>>>>> 0984681... fix: getBoard, insertBoard, updateBoard error after paging
         System.out.println(board.toString());
         board.setUser((User) session.getAttribute("user"));
         board.setCommunity((Community) session.getAttribute("community"));
@@ -83,13 +75,8 @@ public class BoardController {
         model.addAttribute("communityList", communityService.getCommunityList());
         model.addAttribute("page", page);
         model.addAttribute("communitySeq", communitySeq);
-<<<<<<< HEAD
         model.addAttribute("board", boardService.updateBoard(board));
-=======
-        System.out.println(board.toString());
         model.addAttribute("board", boardService.updateBoard(board));
-        System.out.println("통과!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
->>>>>>> 0984681... fix: getBoard, insertBoard, updateBoard error after paging
         return "getBoard";
     }
 
