@@ -73,7 +73,6 @@ public class CommunityController {
             default:
                 pageInfo = null;
         }
-        System.out.println("통과!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         List<Board> boardList = pageInfo.getContent();
         System.out.println(boardList);
         Community tempComm = new Community();
@@ -90,7 +89,6 @@ public class CommunityController {
             model.addAttribute("totalPage", pageInfo.getTotalPages() - 1);
         }
         model.addAttribute("boardListSize", boardList.size());
-        System.out.println("다 통과!!!!!!!!!!!");
         return "getCommunity";
     }
 
@@ -98,18 +96,18 @@ public class CommunityController {
     @PostMapping("/deleteCommunity")
     public String deleteCommunity(Community community) {
         communityService.deleteCommunity(community);
-        return "adminPage.............."; // 나중에 추가
+        return "adminPage"; // 나중에 추가
     }
 
     @PostMapping("/insertCommunity")
     public String insertCommunity(Community community) {
         communityService.insertCommunity(community);
-        return "adminPage..........";
+        return "adminPage";
     }
 
     @PostMapping("/updateCommunity")
     public String updateCommunity(Community community) {
         communityService.updateCommunity(community);
-        return "adminPage........";
+        return "adminPage";
     }
 }

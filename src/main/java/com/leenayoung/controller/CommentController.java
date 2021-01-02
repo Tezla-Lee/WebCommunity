@@ -27,9 +27,6 @@ public class CommentController {
     public String insertComment(Board board, Comment comment, HttpSession session, Model model, @RequestParam("communitySeq") long communitySeq,
                                 @RequestParam int page) {
         System.out.println("===> insertComment ..................");
-//        System.out.println("communitySeq : " + communitySeq);
-//        System.out.println("board : " + board.toString());
-//        System.out.println("comment : " + comment.toString());
         comment.setUser((User) session.getAttribute("user"));
         comment.setBoard(boardService.getBoard(board));
         commentService.insertComment(comment);

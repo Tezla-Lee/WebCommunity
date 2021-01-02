@@ -29,9 +29,7 @@ public class MainController {
 
     @GetMapping({"/", "/home"})
     public String main(Model model, HttpSession session) {
-        System.out.println("===> main Get.............");
-//        model.addAttribute("communityList", communityService.getCommunityList());
-//        model.addAttribute("boardList", boardService.getBoardList());
+        System.out.println("===> main Get...");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
         session.setAttribute("time", simpleDateFormat.format(new Date()));
         return "redirect:mainpage?page=0";
@@ -39,8 +37,7 @@ public class MainController {
 
     @GetMapping("/mainpage")
     public String mainPage(Model model, @RequestParam int page) {
-        System.out.println("===> getMainpage...................................................");
-        System.out.println(page);
+        System.out.println("===> getMainpage...");
         model.addAttribute("communityList", communityService.getCommunityList());
         model.addAttribute("communityList", communityService.getCommunityList());
 
@@ -54,17 +51,12 @@ public class MainController {
         model.addAttribute("searchCondition", "title");
         model.addAttribute("searchKeyword", "");
         model.addAttribute("page", page);
-        System.out.println(totalPage);
-
         return "main";
     }
 
     @GetMapping("/mainSearch")
     public String main(User user, Model model, @RequestParam("searchCondition") String searchCondition, @RequestParam("searchKeyword") String searchKeyword, @RequestParam int page) {
         System.out.println("===> main Post.............");
-        System.out.println("searchCondition : " + searchCondition);
-        System.out.println("searchKeyword : " + searchKeyword);
-        System.out.println(page);
         model.addAttribute("user", user);
         model.addAttribute("communityList", communityService.getCommunityList());
         model.addAttribute("searchCondition", searchCondition);
